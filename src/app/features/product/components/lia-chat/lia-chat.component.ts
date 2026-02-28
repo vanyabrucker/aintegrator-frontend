@@ -21,10 +21,10 @@ export class LiaChatComponent implements OnInit, OnDestroy {
     displayedText = '';
 
     private readonly examplePrompts = [
-        'Summarize this meeting…',
-        'Extract key action items…',
-        'Translate this into German…',
-        'Create a short executive summary…'
+        'Fasse dieses Meeting zusammen',
+        'Extrahiere die wichtigsten Punkte aus dieser Mail',
+        'Übersetze folgenden Text ins Deutsche',
+        'Erstellen Sie eine kurze Zusammenfassung für Führungskräfte'
     ];
 
     private currentPromptIndex = 0;

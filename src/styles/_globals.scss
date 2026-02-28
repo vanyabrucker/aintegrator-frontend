@@ -106,7 +106,7 @@
 }
 
 .btn {
-    @apply inline-flex items-center justify-center rounded-lg py-3 px-4 font-sans font-medium text-base leading-normal no-underline cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-xl py-3 px-4 font-sans font-medium text-base leading-normal no-underline cursor-pointer transition-colors duration-200;
 
     &:focus-visible {
         @include focus-ring;
@@ -115,10 +115,22 @@
 
 .btn-neutral {
     @apply bg-ai-gray-100 text-ai-gray-850;
+
+    &:hover {
+        @apply bg-ai-gray-300 text-ai-gray-1000;
+    }
 }
 
 .btn-danger-soft {
     @apply bg-[#FDF2F1] text-[#ED2915];
+}
+
+.btn-dark {
+    @apply bg-black text-white;
+
+    &:hover {
+        @apply bg-ai-gray-875;
+    }
 }
 
 .arrow-link-icon {

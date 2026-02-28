@@ -53,11 +53,6 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
-              },
-              {
-                "glob": "favicon.ico",
-                "input": "public",
-                "output": "/"
               }
             ],
             "styles": [

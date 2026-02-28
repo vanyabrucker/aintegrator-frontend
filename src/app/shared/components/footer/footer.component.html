@@ -3,10 +3,6 @@
         class="site-container px-8 lg:px-10 xl:px-12 flex flex-col lg:flex-row justify-between items-start pt-[48px] lg:pt-20">
 
         <div class="flex flex-col items-start w-full lg:w-auto">
-
-            <img src="assets/images/image 8.png" alt="AIntegrator"
-                class="w-[188px] h-[36px] lg:w-[250px] lg:h-[48px] object-cover rounded-[12px] mb-[24px] lg:mb-[36px]" />
-
             <div class="inline-flex gap-[12px] lg:gap-4 mb-[24px] lg:mb-[43px] flex-wrap">
                 <a href="https://www.swissmadesoftware.org/home.html" target="_blank" rel="noopener noreferrer"
                     class="inline-flex flex-col items-center justify-center p-6 lg:p-6 bg-ai-gray-100 border border-ai-gray-650 rounded-[12px] w-[84px] h-[80px] lg:w-[128px] lg:h-[109px] box-border px-0 py-0 lg:p-6 cursor-pointer">
@@ -37,7 +33,6 @@
                 <img src="assets/images/image 43.png" alt="A Swiss"
                     class="w-[70px] h-[15px] lg:w-[96px] lg:h-[20px] object-contain" />
             </div>
-
         </div>
 
         <div
@@ -97,14 +92,18 @@
                 getLocalizedText(settings()?.footerCopyright)
                 }}</span>
 
-            <div class="flex gap-[16px] md:gap-9">
-                @for (link of settings()?.footerLegalLinks || []; track link.url) {
-                <a [routerLink]="link.url"
-                    class="font-sans text-[14px] md:text-[16px] font-normal text-text-muted leading-[26px] cursor-pointer transition-colors duration-200 hover:text-cta">{{
-                    getLocalizedText(link.label)
-                    }}</a>
-                }
+            <div class="flex flex-row justify-between items-center w-full gap-4">
+                <p class="font-sans text-[14px] md:text-[16px] font-normal text-ai-gray-850 leading-[26px]">
+                    © {{ currentYear }} AIntegrator
+                </p>
+                <div class="flex gap-[16px] md:gap-9">
+                    @for (link of settings()?.footerLegalLinks || []; track link.url) {
+                    <a [routerLink]="link.url"
+                        class="font-sans text-[14px] md:text-[16px] font-normal text-text-muted leading-[26px] cursor-pointer transition-colors duration-200 hover:text-cta">{{
+                        getLocalizedText(link.label)
+                        }}</a>
+                    }
+                </div>
             </div>
         </div>
-    </div>
 </footer>
