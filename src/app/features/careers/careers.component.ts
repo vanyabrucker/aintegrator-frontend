@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CareersHeroComponent } from './components/careers-hero/careers-hero.component';
+import { PrinciplesMvSectionComponent } from '../../shared/components/principles-mv-section/principles-mv-section.component';
 import { OpenRolesComponent } from './components/open-roles/open-roles.component';
 import { InitiativeCtaComponent } from './components/initiative-cta/initiative-cta.component';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
 import { Career, CareersPage, LocalizedText } from '../../shared/models/sanity.models';
 import { SanityQueries } from '../../core/services/sanity.helpers';
-import { PrinciplesMvSectionComponent } from '../../shared/components/principles-mv-section/principles-mv-section.component';
 
 interface Role {
     title: string | LocalizedText;
@@ -38,12 +38,35 @@ export class CareersComponent implements OnInit {
     // Fallback roles data
     roles: Role[] = [
         {
-            title: 'Software Engineer – Intern',
+            title: 'Intern Software Engineer',
             department: 'Engineering',
             location: 'Remote',
-            link: 'https://aintegrator.notion.site/Software-Engineer-Intern-315a7ccd21c380c095f7dfadeac4e6e4?source=copy_link'
+            link: '#'
         },
-
+        {
+            title: 'QA Engineer',
+            department: 'Engineering',
+            location: 'Remote',
+            link: '#'
+        },
+        {
+            title: 'Frontend Engineer',
+            department: 'Engineering',
+            location: 'Remote',
+            link: '#'
+        },
+        {
+            title: 'Backend Engineer',
+            department: 'Engineering',
+            location: 'Remote',
+            link: '#'
+        },
+        {
+            title: 'AI/ML Engineer',
+            department: 'Engineering',
+            location: 'Remote',
+            link: '#'
+        }
     ];
 
     constructor(

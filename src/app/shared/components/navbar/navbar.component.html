@@ -4,7 +4,7 @@
       <img [src]="logoSrc" alt="AIntegrator" width="152" height="29" class="h-[29.083px] w-[152px] object-contain" />
     </a>
 
-    <nav class="hidden nav:inline-flex items-center" aria-label="Main navigation">
+    <nav class="hidden min-[1100px]:inline-flex items-center" aria-label="Main navigation">
       <ul class="flex items-center gap-[28px] w-[340px] h-[26px] flex-shrink-0 list-none m-0 p-0">
         <li><a routerLink="/product" routerLinkActive="font-medium text-text-primary"
             class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap transition-colors duration-300 hover:text-text-primary">{{
@@ -24,11 +24,11 @@
       </ul>
     </nav>
 
-    <div class="hidden nav:flex items-center gap-4">
+    <div class="hidden min-[1100px]:flex items-center gap-4">
       <!-- Language Switcher (Desktop) -->
       <div class="flex items-center relative">
         <button (click)="toggleLanguageDropdown()"
-          class="flex items-center gap-1 px-3 py-1.5 text-text-body font-sans text-[14px] font-medium border border-ai-gray-600 rounded-md hover:border-text-body transition-colors duration-200 bg-transparent cursor-pointer"
+          class="flex items-center gap-1 px-3 py-1.5 text-text-body font-sans text-[14px] font-medium border border-[#E5E5E5] rounded-md hover:border-text-body transition-colors duration-200 bg-transparent cursor-pointer"
           type="button" aria-label="Select language" [attr.aria-expanded]="languageDropdownOpen()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -47,7 +47,7 @@
         <!-- Dropdown Menu -->
         @if (languageDropdownOpen()) {
         <div
-          class="absolute top-full mt-2 right-0 bg-white border border-ai-gray-600 rounded-md shadow-lg min-w-[140px] py-1 z-50">
+          class="absolute top-full mt-2 right-0 bg-white border border-[#E5E5E5] rounded-md shadow-lg min-w-[140px] py-1 z-50">
           @for (locale of supportedLocales; track locale) {
           <button (click)="changeLocale(locale)"
             class="w-full text-left px-4 py-2 text-[14px] font-sans transition-colors duration-200 bg-transparent border-none cursor-pointer"
@@ -70,18 +70,18 @@
     </div>
 
     <button
-      class="group flex nav:hidden items-center justify-center w-10 h-10 p-0 bg-transparent border-none z-50 relative rounded-full transition-colors duration-200 hover:bg-ai-gray-100"
+      class="group flex min-[1100px]:hidden items-center justify-center w-10 h-10 p-0 bg-transparent border-none z-50 relative rounded-full transition-colors duration-200 hover:bg-ai-gray-100"
       type="button" [attr.aria-expanded]="mobileMenuOpen" aria-controls="mobile-menu"
       aria-label="Toggle navigation menu" (click)="toggleMobileMenu()">
       <span class="sr-only">Toggle navigation menu</span>
       <span
-        class="absolute left-1/2 top-1/2 block h-[2px] w-[22px] -translate-x-1/2 rounded-full bg-text-body-color origin-center transition-transform duration-[320ms] ease-out"
+        class="absolute left-1/2 top-1/2 block h-[2px] w-[22px] -translate-x-1/2 rounded-full bg-[#303030] origin-center transition-transform duration-[320ms] ease-out"
         [ngClass]="mobileMenuOpen ? 'translate-y-0 rotate-45' : '-translate-y-[6px]'"></span>
       <span
-        class="absolute left-1/2 top-1/2 block h-[2px] w-[22px] -translate-x-1/2 rounded-full bg-text-body-color origin-center transition-transform duration-[320ms] ease-out"
+        class="absolute left-1/2 top-1/2 block h-[2px] w-[22px] -translate-x-1/2 rounded-full bg-[#303030] origin-center transition-transform duration-[320ms] ease-out"
         [ngClass]="mobileMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-[6px]'"></span>
     </button>
-    <div id="mobile-menu" class="fixed inset-0 z-40 nav:hidden transition-opacity duration-[400ms] ease-out"
+    <div id="mobile-menu" class="fixed inset-0 z-40 min-[1100px]:hidden transition-opacity duration-[400ms] ease-out"
       [class.opacity-0]="!mobileMenuOpen" [class.opacity-100]="mobileMenuOpen" [class.invisible]="!mobileMenuOpen"
       [class.pointer-events-none]="!mobileMenuOpen" [class.visible]="mobileMenuOpen">
       <div class="flex flex-col mt-[90px] bg-bg-primary h-full transform transition-transform duration-[400ms] ease-out"
@@ -118,7 +118,7 @@
             </li>
           </ul>
 
-          <div class="w-full h-px bg-ai-gray-600 my-[60px]"></div>
+          <div class="w-full h-px bg-[#E5E5E5] my-[60px]"></div>
 
           <div class="mb-8">
             <p class="text-text-body font-sans text-[14px] font-medium mb-3 uppercase tracking-wide">
@@ -130,7 +130,7 @@
               <button (click)="changeLocale(locale)"
                 class="px-4 py-2 text-[16px] font-sans rounded-md border transition-all duration-200 bg-transparent cursor-pointer"
                 [class.border-cta]="locale === currentLocale" [class.text-cta]="locale === currentLocale"
-                [class.font-medium]="locale === currentLocale" [class.border-ai-gray-600]="locale !== currentLocale"
+                [class.font-medium]="locale === currentLocale" [class.border-[#E5E5E5]]="locale !== currentLocale"
                 [class.text-text-body]="locale !== currentLocale"
                 [class.hover:border-text-body]="locale !== currentLocale" type="button">
                 {{ localeLabels[locale] }}
