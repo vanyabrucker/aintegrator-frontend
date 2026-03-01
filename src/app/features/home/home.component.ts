@@ -8,6 +8,7 @@ import { TestimonialSectionComponent } from '../../shared/components/testimonial
 import { CtaCardComponent } from './components/cta-card/cta-card.component';
 import { SecurityCardComponent } from '../../shared/components/security-card/security-card.component';
 import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.component';
+import { ProcessStepsComponent } from '../../shared/components/process-steps/process-steps.component';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
 import { HomePage, Testimonial } from '../../shared/models/sanity.models';
@@ -27,6 +28,7 @@ import { LocalizedTextPipe } from '../../shared/pipes/localized-text.pipe';
         CtaCardComponent,
         SecurityCardComponent,
         FinalCtaComponent,
+        ProcessStepsComponent,
         LocalizedTextPipe
     ],
     templateUrl: './home.component.html',

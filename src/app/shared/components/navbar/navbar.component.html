@@ -118,72 +118,33 @@
             </li>
           </ul>
 
-          <div id="mobile-menu"
-            class="fixed inset-0 z-40 min-[1100px]:hidden transition-opacity duration-[400ms] ease-out"
-            [class.opacity-0]="!mobileMenuOpen" [class.opacity-100]="mobileMenuOpen" [class.invisible]="!mobileMenuOpen"
-            [class.pointer-events-none]="!mobileMenuOpen" [class.visible]="mobileMenuOpen">
-            <div
-              class="flex flex-col mt-[90px] bg-bg-primary h-full transform transition-transform duration-[400ms] ease-out"
-              [class.translate-x-full]="!mobileMenuOpen" [class.translate-x-0]="mobileMenuOpen">
-              <div class="site-container flex flex-col mt-[44px]">
-                <ul class="flex flex-col gap-[40px] text-left list-none m-0 p-0">
-                  <li>
-                    <a routerLink="/product" routerLinkActive="font-medium"
-                      class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-                      (click)="closeMobileMenu()">
-                      Produkte
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/about" routerLinkActive="font-medium"
-                      class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-                      (click)="closeMobileMenu()">
-                      Über uns
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/careers" routerLinkActive="font-medium"
-                      class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-                      (click)="closeMobileMenu()">
-                      Karriere
-                    </a>
-                  </li>
-                  <li>
-                    <a routerLink="/contact" routerLinkActive="font-medium"
-                      class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-                      (click)="closeMobileMenu()">
-                      Kontakt
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="mb-8">
-                  <p class="text-text-body font-sans text-[14px] font-medium mb-3 uppercase tracking-wide">
-                    {{ currentLocale === 'de' ? 'Sprache / Language' : currentLocale === 'fr' ? 'Langue / Language' :
-                    currentLocale === 'it' ? 'Lingua / Language' : 'Language' }}
-                  </p>
-                  <div class="flex flex-wrap gap-3">
-                    @for (locale of supportedLocales; track locale) {
-                    <button (click)="changeLocale(locale)"
-                      class="px-4 py-2 text-[16px] font-sans rounded-md border transition-all duration-200 bg-transparent cursor-pointer"
-                      [class.border-cta]="locale === currentLocale" [class.text-cta]="locale === currentLocale"
-                      [class.font-medium]="locale === currentLocale" [class.border-[#E5E5E5]]="locale !== currentLocale"
-                      [class.text-text-body]="locale !== currentLocale"
-                      [class.hover:border-text-body]="locale !== currentLocale" type="button">
-                      {{ localeLabels[locale] }}
-                    </button>
-                    }
-                  </div>
-                </div>
-
-                <a routerLink="/contact"
-                  class="flex items-center gap-[4px] text-cta font-sans text-[24px] font-medium no-underline"
-                  (click)="closeMobileMenu()">
-                  <span>{{ navLabels.cta }}</span>
-                  <img src="assets/icons/Frame.svg" class="flex-shrink-0" alt="" aria-hidden="true" />
-                </a>
-              </div>
+          <div class="mb-8">
+            <p class="text-text-body font-sans text-[14px] font-medium mb-3 uppercase tracking-wide">
+              {{ currentLocale === 'de' ? 'Sprache / Language' : currentLocale === 'fr' ? 'Langue / Language' :
+              currentLocale === 'it' ? 'Lingua / Language' : 'Language' }}
+            </p>
+            <div class="flex flex-wrap gap-3">
+              @for (locale of supportedLocales; track locale) {
+              <button (click)="changeLocale(locale)"
+                class="px-4 py-2 text-[16px] font-sans rounded-md border transition-all duration-200 bg-transparent cursor-pointer"
+                [class.border-cta]="locale === currentLocale" [class.text-cta]="locale === currentLocale"
+                [class.font-medium]="locale === currentLocale" [class.border-[#E5E5E5]]="locale !== currentLocale"
+                [class.text-text-body]="locale !== currentLocale"
+                [class.hover:border-text-body]="locale !== currentLocale" type="button">
+                {{ localeLabels[locale] }}
+              </button>
+              }
             </div>
           </div>
+
+          <a routerLink="/contact"
+            class="flex items-center gap-[4px] text-cta font-sans text-[24px] font-medium no-underline"
+            (click)="closeMobileMenu()">
+            <span>{{ navLabels.cta }}</span>
+            <img src="assets/icons/Frame.svg" class="flex-shrink-0" alt="" aria-hidden="true" />
+          </a>
         </div>
+      </div>
+    </div>
+  </div>
 </header>

@@ -1,7 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.component';
 import { ContactHeroComponent } from './components/contact-hero/contact-hero.component';
 import { ContactCardsComponent } from './components/contact-cards/contact-cards.component';
 import { SanityService } from '../../core/services/sanity.service';
@@ -12,7 +11,7 @@ import { SanityQueries } from '../../core/services/sanity.helpers';
 @Component({
     selector: 'app-contact',
     standalone: true,
-    imports: [CommonModule, RouterModule, FinalCtaComponent, ContactHeroComponent, ContactCardsComponent],
+    imports: [CommonModule, RouterModule, ContactHeroComponent, ContactCardsComponent],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss'
 })
