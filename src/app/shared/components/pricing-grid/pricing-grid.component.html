@@ -41,9 +41,8 @@
                     <div class="flex items-center gap-[12px]">
                         <img src="assets/icons/circletick.png" alt=""
                             class="w-[17.967px] h-[17.967px] object-contain" />
-                        <span
-                            class="text-ai-gray-850 font-['Poppins'] font-normal text-[16px] leading-normal">Enterprise-grade
-                            {{ (plans[0]?.features?.[1]?.text || '') | localizedText }}</span>
+                        <span class="text-ai-gray-850 font-['Poppins'] font-normal text-[16px] leading-normal">Schweizer
+                            Server</span>
                     </div>
                     <div class="flex items-center gap-[12px]">
                         <img src="assets/icons/circletick.png" alt=""
@@ -107,8 +106,8 @@
                             {{ (plans[1]?.features?.[0]?.text || '') | localizedText }}</span>
                     </div>
                     <div class="flex items-center gap-[12px]">
-                        <img src="assets/icons/circletick.png" alt=""
-                            class="w-[17.967px] h-[17.967px] object-contain" />
+                        <lucide-icon [img]="circleCheckIcon" [size]="18"
+                            class="text-ai-gray-850 flex-shrink-0"></lucide-icon>
                         <span
                             class="text-ai-gray-850 font-['Poppins'] font-normal text-[16px] leading-normal">Enterprise-grade
                             {{ (plans[1]?.features?.[1]?.text || '') | localizedText }}</span>

@@ -1,3 +1,32 @@
 :host {
     display: block;
 }
+
+.chat-input-shell {
+    min-height: 72px;
+}
+
+.chat-input-text {
+    flex: 1;
+    min-width: 0;
+    padding-right: 12px;
+    align-self: flex-start;
+    text-align: left;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+@media (min-width: 1024px) {
+    .chat-input-shell {
+        min-height: 55px;
+    }
+
+    .chat-input-text {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+}

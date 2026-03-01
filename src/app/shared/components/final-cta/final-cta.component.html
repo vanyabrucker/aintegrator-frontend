@@ -47,15 +47,5 @@
                     class="object-contain w-[28px] h-[28px] xl:w-auto xl:h-auto arrow-link-icon" />
             </a>
         </div>
-
-        <div *ngIf="showDecoration"
-            class="hidden xl:block absolute left-1/2 -translate-x-1/2 pointer-events-none z-[-1] w-[900px] md:w-[1200px] xl:w-[1344px] max-w-none opacity-50 md:opacity-100"
-            [ngClass]="decorationPositionClass">
-            <img src="assets/images/Group 2846.png" alt="" class="w-full h-auto object-contain" />
-        </div>
-
-        <img *ngIf="showMobileDecoration" [src]="'/' + mobileDecoration" alt=""
-            class="xl:hidden absolute pointer-events-none z-[10]" [ngClass]="mobileDecorationClass" />
-
     </div>
 </section>

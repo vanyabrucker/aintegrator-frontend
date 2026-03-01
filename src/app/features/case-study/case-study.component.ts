@@ -25,12 +25,12 @@ export class CaseStudyComponent implements OnInit {
 
     // Fallback stats data
     readonly upperStats: CaseStudyStat[] = [
-        { value: "150'000 CHF", description: 'Jährliche Kostenreduktion' },
+        { value: "150'000.- CHF", description: 'Jährliche Kostenreduktion' },
         { value: '6 Monate', description: 'Entwicklungszeit' }
     ];
 
     readonly lowerStats: CaseStudyStat[] = [
-        { value: "150'000 CHF", description: 'Jährliche Kostenreduktion' },
+        { value: "150'000.- CHF", description: 'Jährliche Kostenreduktion' },
         { value: '6 Monate', description: 'Entwicklungszeit' },
     ];
 

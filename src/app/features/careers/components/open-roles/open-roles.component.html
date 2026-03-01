@@ -14,12 +14,25 @@
             </p>
         </div>
 
-        <!-- TODO: Hidden until we implement the filters -->
-        <div class="gap-[6px] md:gap-[24px] justify-center flex-wrap w-full hidden">
-            <div class="h-[48px] md:h-[50px] rounded-[24px] bg-ai-gray-100 flex items-center justify-center gap-[8px] px-[16px] md:px-[24px] w-[157px] md:w-[217px]"
-                (click)="setDepartment('Engineering')">
-                <span class="text-[18px] md:text-[24px] text-ai-gray-850">{{ selectedDepartment }}</span>
-                <img src="assets/icons/Arrow.png" alt="Dropdown" class="w-6 h-6">
+        <div class="flex gap-[6px] md:gap-[24px] justify-center items-center w-full">
+            <div class="relative">
+                <button type="button"
+                    class="px-4 py-2 md:px-6 md:py-3 rounded-[24px] bg-ai-gray-100 flex items-center justify-center gap-[8px] border-0 cursor-pointer"
+                    aria-label="Department auswählen" (click)="toggleDepartmentDropdown()">
+                    <span class="text-base text-ai-gray-850">{{ selectedDepartment }}</span>
+                    <img src="assets/icons/Arrow.png" alt="" class="w-6 h-6" [class.rotate-180]="isDepartmentOpen">
+                </button>
+                @if (isDepartmentOpen) {
+                <div class="absolute z-20 mt-2 min-w-full rounded-[12px] border border-ai-gray-650 bg-white p-2">
+                    @for (dept of departmentOptions; track dept) {
+                    <button type="button"
+                        class="w-full text-left px-3 py-2 rounded-[8px] bg-transparent border-0 cursor-pointer hover:bg-ai-gray-100 transition-colors text-base text-ai-gray-850"
+                        (click)="setDepartment(dept)">
+                        {{ dept }}
+                    </button>
+                    }
+                </div>
+                }
             </div>
 
             <div class="relative">
