@@ -11,12 +11,11 @@ import { LiaChatComponent } from './components/lia-chat/lia-chat.component';
 import { BoltsSectionComponent } from './components/bolts-section/bolts-section.component';
 import { SecurityGridComponent } from '../../shared/components/security-grid/security-grid.component';
 import { PricingGridComponent } from '../../shared/components/pricing-grid/pricing-grid.component';
-import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.component';
 
 @Component({
     selector: 'app-product',
     standalone: true,
-    imports: [CommonModule, HeroComponent, InfoSectionComponent, MeetingAnalysisComponent, IntegrationsSectionComponent, MeetingTranscriptionComponent, MeetingSummaryComponent, AgenticActionsComponent, LiaChatComponent, BoltsSectionComponent, SecurityGridComponent, PricingGridComponent, FinalCtaComponent],
+    imports: [CommonModule, HeroComponent, InfoSectionComponent, MeetingAnalysisComponent, IntegrationsSectionComponent, MeetingTranscriptionComponent, MeetingSummaryComponent, AgenticActionsComponent, LiaChatComponent, BoltsSectionComponent, SecurityGridComponent, PricingGridComponent],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

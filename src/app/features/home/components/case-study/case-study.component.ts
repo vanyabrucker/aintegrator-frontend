@@ -21,7 +21,7 @@ export class CaseStudyComponent {
     readonly landmarkIcon = Landmark;
 
     readonly homeStats: HomeCaseStudyStat[] = [
-        { value: "150'000 CHF", description: 'Jährliche Kostenreduktion' },
+        { value: "150'000.- CHF", description: 'Jährliche Kostenreduktion' },
         { value: '6 Monate', description: 'Entwicklungszeit' }
     ];
 }

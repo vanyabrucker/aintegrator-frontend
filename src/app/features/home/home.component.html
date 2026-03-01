@@ -1,11 +1,54 @@
 <div class="w-full flex flex-col">
 
   <app-hero title="AI-Integration mit messbarer Wirkung"
-    description="Wir helfen Unternehmen, Künstliche Intelligenz in ihre Prozesse zu integrieren – von der strategischen Beratung bis zu vollständigen AI-Lösungen."
+    description="Wir unterstützen Unternehmen, Künstliche Intelligenz in ihre Prozesse zu integrieren – von der strategischen Beratung bis zu vollständigen AI-Lösungen."
     [showMobileHeroDots]="true" mobileMarginClass="mt-[125px] mb-[146px] xl:mt-[224px] xl:mb-0">
   </app-hero>
 
   <app-logo-carousel></app-logo-carousel>
+
+  <section class="w-full">
+    <div class="site-container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[24px]">
+        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
+          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
+            Beratung
+          </h3>
+          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
+            Strategische Beratung und Umsetzung von tailor-made AI-Lösungen
+          </p>
+        </div>
+
+        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
+          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
+            Produkte
+          </h3>
+          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
+            AI-Tools, entstanden aus der Praxis
+          </p>
+          <a [routerLink]="['/product']"
+            class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
+            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
+            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+          </a>
+        </div>
+
+        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
+          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
+            Education
+          </h3>
+          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
+            AI-Weiterbildung für Führungskräfte
+          </p>
+          <a href="https://aintegrator.education" target="_blank" rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
+            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
+            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <app-case-study></app-case-study>
 
@@ -17,9 +60,7 @@
 
   <app-cta-card></app-cta-card>
 
-  <app-process-steps></app-process-steps>
-
-  <app-security-card></app-security-card>
+  <!-- <app-security-card></app-security-card> -->
 
   <app-final-cta [showMobileDecoration]="true"
     [mobileDecorationClass]="'w-[195px] h-auto top-[300px] left-[-40px] md:w-[300px] md:top-[300px] md:left-[0px] lg:top-[300px] opacity-100'"
