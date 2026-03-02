@@ -1,13 +1,13 @@
 <section class="w-full flex justify-center relative">
     <div
-        class="flex flex-col items-center text-center relative w-full max-w-[323px] mx-auto md:max-w-[600px] md:px-12 xl:w-[828px] xl:max-w-none xl:px-0 gap-0 md:gap-[32px] xl:gap-[24px]">
+        class="flex flex-col items-center text-center relative w-full mx-auto md:px-12 xl:px-0 gap-0 md:gap-[32px] xl:gap-[24px]">
 
-        <h2 class="text-primary font-sans font-medium text-[24px] md:text-[32px] max-w-[65ch]] mx-auto leading-normal text-center"
+        <h2 class="text-primary max-w-[40ch] font-sans font-medium text-[24px] md:text-[32px] mx-auto leading-normal text-center"
             [ngClass]="titleDescriptionGapClass">
             {{ title }}
         </h2>
 
-        <p class="w-full mx-auto text-text-muted font-sans leading-normal text-base md:text-xl font-normal text-center xl:mb-[8px]"
+        <p class="w-full mx-auto text-text-muted max-w-prose font-sans leading-normal text-base md:text-xl font-normal text-center xl:mb-[8px]"
             [ngClass]="[descriptionMaxWidthClass, descriptionButtonsGapClass]">
             {{ description }}
         </p>
