@@ -1,16 +1,19 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ArrowUp, LucideAngularModule, Plus } from 'lucide-angular';
 
 @Component({
     selector: 'app-lia-chat',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, LucideAngularModule],
     templateUrl: './lia-chat.component.html',
     styleUrl: './lia-chat.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LiaChatComponent implements OnInit, OnDestroy {
     displayedText = '';
+    readonly plusIcon = Plus;
+    readonly sendIcon = ArrowUp;
 
     private readonly examplePrompts = [
         'Fasse dieses Meeting zusammen',

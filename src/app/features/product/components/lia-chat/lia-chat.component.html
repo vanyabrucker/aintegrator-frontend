@@ -33,11 +33,18 @@
                     </div>
 
                     <div
-                        class="chat-input-shell w-full max-w-[514px] rounded-xl border border-ai-gray-300 bg-white shadow-[0_8px_24px_-5px_rgba(0,0,0,0.10)] flex items-end justify-between p-3 shrink-0">
-                        <span class="chat-input-text text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] lg:text-[14px] font-normal leading-normal">{{
-                            displayedText }}</span>
-                        <img src="assets/icons/Group 2281.png" alt=""
-                            class="w-[24px] h-[24px] lg:w-[31px] lg:h-[31px] object-contain self-end">
+                        class="chat-input-shell relative w-full max-w-[514px] h-32 rounded-xl border border-ai-gray-300 bg-white shadow-[0_8px_24px_-4px_rgba(0,0,0,0.0)] p-3 shrink-0">
+                        <span class="chat-input-text pb-8 text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] lg:text-[14px] font-normal leading-normal">{{ displayedText }}</span>
+
+                        <div
+                            class="absolute bottom-3 left-3 w-[24px] h-[24px] lg:w-[31px] lg:h-[31px] rounded-full border border-ai-gray-300 flex items-center justify-center">
+                            <lucide-icon [img]="plusIcon" [size]="16" class="text-ai-gray-900"></lucide-icon>
+                        </div>
+
+                        <div
+                            class="absolute bottom-3 right-3 w-[24px] h-[24px] lg:w-[31px] lg:h-[31px] rounded-full bg-ai-gray-900 flex items-center justify-center">
+                            <lucide-icon [img]="sendIcon" [size]="16" class="text-white"></lucide-icon>
+                        </div>
                     </div>
 
                 </div>
