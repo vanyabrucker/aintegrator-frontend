@@ -14,18 +14,18 @@
                 {{ quote() }}
             </blockquote>
 
-            <div class="flex items-center gap-[8px] md:gap-[12px] lg:gap-[16px]">
-                <div
+            <div *ngIf="hasMeta()" class="flex items-center gap-[8px] md:gap-[12px] lg:gap-[16px]">
+                <div *ngIf="avatarUrl()"
                     class="w-[36px] h-[36px] md:w-[50px] md:h-[50px] lg:w-[70px] lg:h-[70px] rounded-full bg-ai-gray-100 overflow-hidden relative flex-shrink-0 flex items-center justify-center lg:block">
-                    <img [src]="avatarUrl()" [alt]="author()" class="w-full h-full object-cover">
+                    <img [src]="avatarUrl()" [alt]="author() || 'Testimonial avatar'" class="w-full h-full object-cover">
                 </div>
 
-                <div class="flex flex-col justify-center gap-0 lg:gap-[4px]" [ngClass]="mobileAuthorAlignment()">
-                    <span
+                <div *ngIf="author() || role()" class="flex flex-col justify-center gap-0 lg:gap-[4px]" [ngClass]="mobileAuthorAlignment()">
+                    <span *ngIf="author()"
                         class="text-primary font-sans text-[16px] md:text-[20px] lg:text-[24px] font-medium leading-tight">
                         {{ author() }}
                     </span>
-                    <span
+                    <span *ngIf="role()"
                         class="text-text-secondary font-sans text-[14px] md:text-[15px] lg:text-[16px] font-normal leading-normal">
                         {{ role() }}
                     </span>
