@@ -1,20 +1,19 @@
-<div class="w-full" [ngClass]="[backgroundClass(), containerClass()]">
-    <div class="max-w-[1144px] mx-auto">
-        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
-            @for (stat of stats(); track stat.description) {
-                <div class="flex flex-col justify-start gap-[8px] items-start bg-white rounded-[12px] p-[16px] sm:p-[20px] aspect-square">
-                    <div class="flex items-baseline" [style.color]="stat.color || '#000'">
-                        <span class="font-medium font-sans text-[24px] leading-normal">{{
-                            stat.value }}<span *ngIf="stat.suffix === '%'">%</span></span>
-                        <span *ngIf="stat.suffix && stat.suffix !== '%'"
-                            class="font-medium font-sans text-[24px] leading-normal ml-[2px]">{{
-                            stat.suffix }}</span>
-                    </div>
-                    <p class="text-[rgba(77,77,77,0.7)] font-normal font-sans leading-normal m-0 text-base md:text-xl">
-                        {{ stat.description }}
-                    </p>
-                </div>
-            }
+<div class="w-full rounded-[12px] p-[32px] md:p-[80px]" [ngClass]="backgroundClass()">
+    <div class="flex flex-col xl:flex-row flex-wrap justify-center items-stretch gap-[24px] max-w-[1144px] mx-auto">
+        <div *ngFor="let stat of stats()"
+            [ngClass]="size() === 'small' ? 'xl:h-[228px] p-[24px]' : 'xl:h-[286px] p-[24px] xl:p-[36px]'"
+            class="flex flex-col justify-end items-start bg-white rounded-[12px] flex-none xl:flex-1 h-[140px] min-h-[140px] md:h-auto md:min-h-0 xl:min-h-[220px] gap-0">
+            <div class="flex items-baseline" [style.color]="stat.color || '#000'">
+                <span class="font-medium font-sans text-[32px] xl:text-[56px] leading-normal">{{
+                    stat.value }}<span *ngIf="stat.suffix === '%'">%</span></span>
+                <span *ngIf="stat.suffix && stat.suffix !== '%'"
+                    class="font-medium font-sans text-[20px] xl:text-[36px] leading-normal ml-[2px]">{{
+                    stat.suffix }}</span>
+            </div>
+            <p [ngClass]="size() === 'small' ? 'text-[14px]' : 'text-[14px] xl:text-[16px]'"
+                class="text-[rgba(77,77,77,0.7)] font-normal font-sans leading-normal m-0 text-md md:text-xl">
+                {{ stat.description | localizedText }}
+            </p>
         </div>
     </div>
 </div>

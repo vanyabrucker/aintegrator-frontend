@@ -1,15 +1,23 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LocalizedTextPipe } from '../../../../shared/pipes/localized-text.pipe';
 
 @Component({
     selector: 'app-lia-chat',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, LocalizedTextPipe],
     templateUrl: './lia-chat.component.html',
     styleUrl: './lia-chat.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LiaChatComponent implements OnInit, OnDestroy {
+    @Input() title = '';
+    @Input() subtitle = '';
+    @Input() promptMobile = '';
+    @Input() promptDesktop = '';
+    @Input() inputPlaceholder = '';
+    @Input() quickActions: string[] = [];
+
     displayedText = '';
 
     private readonly examplePrompts = [

@@ -5,30 +5,64 @@
         <div
             class="w-full lg:flex-1 lg:max-w-[445px] flex flex-col items-center lg:items-start gap-[24px] order-1 lg:order-1">
 
-            <div
-                class="flex py-2 xl:py-3 px-4 xl:px-6 justify-center items-center rounded-[27.059px] border-[1.353px] border-solid border-[#ED2915]">
-                <span
-                    class="text-[#ED2915] font-['Poppins',_sans-serif] text-sm xl:text-md font-medium leading-[100%]">Beta</span>
+            <div class="flex py-2 xl:py-3 px-4 xl:px-6 justify-center items-center rounded-full border border-cta">
+                <span class="text-cta font-sans text-sm xl:text-md font-medium leading-none">{{
+                    badgeLabel | localizedText }}</span>
             </div>
 
             <h2
                 class="text-ai-gray-1000 text-center lg:text-left font-['Poppins',_sans-serif] text-2xl md:text-3xl xl:text-4xl font-medium leading-normal">
-                Wandelt Meetings in Taten – mit Agentic AI
+                {{ title | localizedText }}
             </h2>
 
             <p
                 class="text-[rgba(77,77,77,0.70)] text-center lg:text-left font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-normal max-w-[323px] lg:max-w-none">
-                KI-Agenten analysieren Gespräche und handeln selbstständig.
+                {{ description | localizedText }}
             </p>
         </div>
 
-        <div class="w-full lg:w-[393px] bg-white rounded-[12px] p-6 md:p-8 xl:p-12 flex flex-col order-2">
+        <div class="w-full h-auto bg-white rounded-[12px] p-6 md:p-8 flex flex-col lg:hidden order-1">
+
+            <div class="flex items-center gap-[7px]">
+                <lucide-icon [img]="searchIcon" [size]="18" class="text-ai-gray-850"></lucide-icon>
+                <span class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[16px] font-medium leading-normal">{{
+                    (mobileCards[0]?.title | localizedText) || '' }}</span>
+            </div>
+            <p class="mt-[8px] text-ai-gray-800 font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">
+                {{ (mobileCards[0]?.description | localizedText) || '' }}
+            </p>
+            <div class="mt-[8px] w-full h-[8px] rounded-[60px] bg-ai-gray-550"></div>
+
+            <div class="flex items-center gap-[7px] mt-[16px]">
+                <lucide-icon [img]="findIcon" [size]="18" class="text-ai-gray-850"></lucide-icon>
+                <span class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[16px] font-medium leading-normal">{{
+                    (mobileCards[1]?.title | localizedText) || '' }}</span>
+            </div>
+            <p class="mt-[8px] text-ai-gray-800 font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">
+                {{ (mobileCards[1]?.description | localizedText) || '' }}
+            </p>
+            <div class="mt-[8px] w-[55%] h-[8px] rounded-[60px] bg-ai-gray-400"></div>
+
+            <div class="flex items-center gap-[7px] mt-[16px]">
+                <lucide-icon [img]="searchIcon" [size]="18" class="text-ai-gray-850"></lucide-icon>
+                <span class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[16px] font-medium leading-normal">{{
+                    (mobileCards[2]?.title | localizedText) || '' }}</span>
+            </div>
+            <p class="mt-[8px] text-ai-gray-800 font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">
+                {{ (mobileCards[2]?.description | localizedText) || '' }}
+            </p>
+            <div class="mt-[8px] w-[23%] h-[8px] rounded-[60px] bg-ai-gray-250"></div>
+        </div>
+
+        <div class="hidden lg:flex lg:w-[393px] xl:h-[390px] bg-white rounded-[12px] p-8 xl:p-12 flex-col order-2">
 
             <div class="flex items-center justify-between pb-[16px] border-b border-ai-gray-650">
                 <div class="flex items-center gap-[12px]">
+                    <img src="assets/icons/checklist.png" alt="" class="w-[24px] h-[24px] object-contain">
+
                     <span
-                        class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[20px] font-medium leading-normal">Action
-                        Items</span>
+                        class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[20px] font-medium leading-normal">{{
+                        actionItemsTitle }}</span>
                 </div>
                 <lucide-icon [img]="ellipsisIcon" [size]="24" class="text-ai-gray-750"></lucide-icon>
             </div>
@@ -38,17 +72,18 @@
                 <div class="flex gap-[12px]">
                     <div
                         class="w-[24px] h-[24px] rounded-[4px] border border-ai-gray-650 flex-shrink-0 flex items-center justify-center">
-                        <lucide-icon [img]="checkIcon" [size]="12" [strokeWidth]="3" class="text-ai-gray-850"></lucide-icon>
+                        <lucide-icon [img]="checkIcon" [size]="12" [strokeWidth]="3"
+                            class="text-ai-gray-850"></lucide-icon>
                     </div>
                     <div class="flex flex-col">
                         <span
                             class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[14px] font-normal leading-normal max-w-[229px]">{{
-                            item.text }}</span>
+                            item.text | localizedText }}</span>
                         <div class="flex items-center gap-[4px] mt-[6px]">
                             <lucide-icon [img]="calendarIcon" [size]="12" class="text-ai-gray-800"></lucide-icon>
                             <span
-                                class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">{{
-                                item.date }}</span>
+                                class="text-text-muted font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">{{
+                                item.date | localizedText }}</span>
                         </div>
                     </div>
                 </div>

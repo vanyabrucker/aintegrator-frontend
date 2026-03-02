@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LocalizedTextPipe } from '../../pipes/localized-text.pipe';
 
 export interface CaseStudyStat {
     value: string;
@@ -11,7 +12,7 @@ export interface CaseStudyStat {
 @Component({
     selector: 'app-case-study-stats',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, LocalizedTextPipe],
     templateUrl: './case-study-stats.component.html',
     styleUrl: './case-study-stats.component.scss'
 })

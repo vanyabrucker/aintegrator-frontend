@@ -4,25 +4,26 @@
         <div class="flex items-center gap-[12px] xl:gap-[16px] flex-shrink-0">
             <div class="flex items-center gap-[6px] xl:gap-[8px]">
                 <button
-                    class="flex items-center justify-center px-2 sm:px-3 py-1.5 !rounded-[6.242px] !border-[0.712px] !border-solid !border-ai-gray-500 text-ai-gray-1000 text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
-                    Datei hochladen
+                    class="flex items-center justify-center px-2 sm:px-3 py-1.5 rounded-[6px] border border-[0.712px] border-solid border-ai-gray-500 text-ai-gray-1000 text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
+                    {{ uploadButtonLabel }}
                 </button>
                 <button
                     class="flex items-center justify-center px-2 sm:px-3 py-1.5 rounded-[6px] border-none bg-ai-gray-975 text-white text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
-                    Live Aufnehmen
+                    {{ recordButtonLabel }}
                 </button>
             </div>
             <div
-            class="w-[32px] h-[32px] border border-ai-gray-400 rounded-full bg-ai-gray-100 flex-shrink-0 flex items-center justify-center text-ai-gray-900 font-sans text-[14px] font-medium">
-            S</div>
+                class="w-[32px] h-[32px] border border-ai-gray-400 rounded-full bg-ai-gray-100 flex-shrink-0 flex items-center justify-center text-ai-gray-900 font-sans text-[14px] font-medium">
+                S</div>
         </div>
     </div>
 
     <div class="relative border-b-2 border-ai-gray-300 pb-[2px]">
         <div class="flex gap-[32px] px-[25px] xl:px-[24px]">
-            <span class="text-ai-gray-850 font-sans text-[14px] font-normal">Zusammenfassung</span>
+            <span class="text-ai-gray-850 font-sans text-[14px] font-normal">{{ summaryTabLabel }}</span>
             <div class="relative">
-                <span class="text-ai-gray-1000 font-sans text-[14px] font-medium">Transkript</span>
+                <span class="text-ai-gray-1000 font-sans text-[14px] font-medium">{{ transcriptTabLabel
+                    }}</span>
                 <div class="absolute -bottom-[4px] left-1/2 -translate-x-1/2 w-[101px] h-[2px] bg-ai-gray-1000">
                 </div>
             </div>
@@ -39,7 +40,8 @@
             </div>
             <div class="flex flex-col xl:gap-[9px]">
                 <div class="flex items-center gap-[8px] h-[28px] xl:h-auto mt-[4px]">
-                    <span class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">{{
+                    <span
+                        class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">{{
                         item.name }}</span>
                     <div
                         class="w-[70px] h-[28px] rounded-[4.371px] flex items-center justify-center flex-shrink-0 xl:p-0 xl:w-auto xl:h-auto xl:border-none xl:rounded-none">

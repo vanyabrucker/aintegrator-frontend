@@ -1,6 +1,9 @@
 <div class="w-full bg-white flex flex-col">
-    <app-contact-hero></app-contact-hero>
     <div class="site-container">
-        <app-contact-cards></app-contact-cards>
+        <app-contact-hero [title]="contactData()?.heroTitle">
+        </app-contact-hero>
+        <app-contact-cards [email]="contactData()?.email" [phone]="contactData()?.phone"
+            [address]="contactData()?.officeAddress">
+        </app-contact-cards>
     </div>
 </div>

@@ -2,22 +2,23 @@
     [ngClass]="mobileMarginClass">
     <div class="site-container flex justify-center relative z-20">
         <div class="flex flex-col items-center relative">
-            <h1 class="w-full max-w-[354px] text-primary text-center font-medium mb-6 tracking-normal font-sans text-[32px] md:text-[48px] xl:text-[64px] leading-[48px] md:leading-tight"
+            <h1 class="w-full max-w-[354px] text-primary text-center font-medium mb-6 tracking-normal font-sans text-[32px] md:text-[48px] xl:text-[64px] leading-tight"
                 [ngClass]="titleMaxWidthClass" [innerHTML]="title">
             </h1>
             <p
                 class="w-full max-w-[333px] md:max-w-[633px] h-auto md:h-auto text-text-muted text-center font-normal tracking-normal font-sans text-base md:text-xl leading-[27px] md:leading-normal">
-                {{ description }}
+                {{ description | localizedText }}
             </p>
 
             @if (showButton) {
             <a [href]="buttonLink" [attr.target]="buttonLink.startsWith('http') ? '_blank' : null"
                 [attr.rel]="buttonLink.startsWith('http') ? 'noopener noreferrer' : null"
                 class="mt-[32px] hidden xl:flex items-center border-none bg-transparent p-0 text-cta font-sans font-medium text-[24px] leading-normal no-underline cursor-pointer arrow-link">
-                <span>{{ buttonLabel }}</span>
+                <span>{{ buttonLabel | localizedText }}</span>
                 <img src="assets/icons/Frame.svg" alt="" class="block arrow-link-icon">
             </a>
             }
         </div>
     </div>
+
 </section>

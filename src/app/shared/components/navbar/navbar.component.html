@@ -1,33 +1,73 @@
 <header class="w-full bg-bg-primary sticky top-0 z-50">
   <div class="site-container relative z-50 flex h-[42px] items-center justify-between mt-12">
-    <a routerLink="/" class="flex flex-shrink-0 items-center" aria-label="AIntegrator Home"
-      (click)="closeMobileMenu()">
+    <a routerLink="/" class="flex flex-shrink-0 items-center" aria-label="AIntegrator Home" (click)="closeMobileMenu()">
       <img [src]="logoSrc" alt="AIntegrator" width="152" height="29" class="h-[29.083px] w-[152px] object-contain" />
     </a>
 
     <nav class="hidden min-[1100px]:inline-flex items-center" aria-label="Main navigation">
       <ul class="flex items-center gap-[28px] w-[340px] h-[26px] flex-shrink-0 list-none m-0 p-0">
         <li><a routerLink="/product" routerLinkActive="font-medium text-text-primary"
-            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap">Produkte</a>
+            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap transition-colors duration-300 hover:text-text-primary">{{
+            navLabels.product }}</a>
         </li>
         <li><a routerLink="/about" routerLinkActive="font-medium text-text-primary"
-            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap">Über
-            uns</a></li>
+            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap transition-colors duration-300 hover:text-text-primary">{{
+            navLabels.about }}</a></li>
         <li><a routerLink="/careers" routerLinkActive="font-medium text-text-primary"
-            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap">Karriere</a>
+            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap transition-colors duration-300 hover:text-text-primary">{{
+            navLabels.careers }}</a>
         </li>
         <li><a routerLink="/contact" routerLinkActive="font-medium text-text-primary"
-            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap">Kontakt</a>
+            class="text-text-body font-sans text-[16px] font-normal leading-[26px] no-underline whitespace-nowrap transition-colors duration-300 hover:text-text-primary">{{
+            navLabels.contact }}</a>
         </li>
       </ul>
     </nav>
 
-    <a routerLink="/contact"
-      class="hidden min-[1100px]:inline-flex items-center no-underline whitespace-nowrap cursor-pointer arrow-link"
-      aria-label="Termin vereinbaren">
-      <span class="text-cta font-sans text-[16px] font-medium">Termin vereinbaren</span>
-      <img [src]="arrowIconSrc" alt="" aria-hidden="true" class="arrow-link-icon" />
-    </a>
+    <div class="hidden min-[1100px]:flex items-center gap-4">
+      <!-- Language Switcher (Desktop) -->
+      <div class="flex items-center relative">
+        <button (click)="toggleLanguageDropdown()"
+          class="flex items-center gap-1 px-3 py-1.5 text-text-body font-sans text-[14px] font-medium border border-[#E5E5E5] rounded-md hover:border-text-body transition-colors duration-200 bg-transparent cursor-pointer"
+          type="button" aria-label="Select language" [attr.aria-expanded]="languageDropdownOpen()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>{{ getLocaleShortCode(currentLocale) }}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" [class.rotate-180]="languageDropdownOpen()"
+            class="transition-transform duration-200">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        @if (languageDropdownOpen()) {
+        <div
+          class="absolute top-full mt-2 right-0 bg-white border border-[#E5E5E5] rounded-md shadow-lg min-w-[140px] py-1 z-50">
+          @for (locale of supportedLocales; track locale) {
+          <button (click)="changeLocale(locale)"
+            class="w-full text-left px-4 py-2 text-[14px] font-sans transition-colors duration-200 bg-transparent border-none cursor-pointer"
+            [class.text-cta]="locale === currentLocale" [class.font-medium]="locale === currentLocale"
+            [class.text-text-body]="locale !== currentLocale" [class.hover:bg-bg-secondary]="locale !== currentLocale"
+            type="button">
+            {{ localeLabels[locale] }}
+          </button>
+          }
+        </div>
+        }
+      </div>
+
+      <a routerLink="/contact"
+        class="inline-flex items-center no-underline whitespace-nowrap cursor-pointer transition-opacity duration-300 hover:opacity-80"
+        [attr.aria-label]="navLabels.cta">
+        <span class="text-cta font-sans text-[14px] font-medium text-right truncate">{{ navLabels.cta }}</span>
+        <img [src]="arrowIconSrc" alt="" aria-hidden="true" />
+      </a>
+    </div>
 
     <button
       class="group flex min-[1100px]:hidden items-center justify-center w-10 h-10 p-0 bg-transparent border-none z-50 relative rounded-full transition-colors duration-200 hover:bg-ai-gray-100"
@@ -41,54 +81,69 @@
         class="absolute left-1/2 top-1/2 block h-[2px] w-[22px] -translate-x-1/2 rounded-full bg-[#303030] origin-center transition-transform duration-[320ms] ease-out"
         [ngClass]="mobileMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-[6px]'"></span>
     </button>
-  </div>
+    <div id="mobile-menu" class="fixed inset-0 z-40 min-[1100px]:hidden transition-opacity duration-[400ms] ease-out"
+      [class.opacity-0]="!mobileMenuOpen" [class.opacity-100]="mobileMenuOpen" [class.invisible]="!mobileMenuOpen"
+      [class.pointer-events-none]="!mobileMenuOpen" [class.visible]="mobileMenuOpen">
+      <div class="flex flex-col mt-[90px] bg-bg-primary h-full transform transition-transform duration-[400ms] ease-out"
+        [class.translate-x-full]="!mobileMenuOpen" [class.translate-x-0]="mobileMenuOpen">
+        <div class="site-container flex flex-col mt-[44px]">
+          <ul class="flex flex-col gap-[40px] text-left list-none m-0 p-0">
+            <li>
+              <a routerLink="/product" routerLinkActive="font-medium"
+                class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
+                (click)="closeMobileMenu()">
+                {{ navLabels.product }}
+              </a>
+            </li>
+            <li>
+              <a routerLink="/about" routerLinkActive="font-medium"
+                class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
+                (click)="closeMobileMenu()">
+                {{ navLabels.about }}
+              </a>
+            </li>
+            <li>
+              <a routerLink="/careers" routerLinkActive="font-medium"
+                class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
+                (click)="closeMobileMenu()">
+                {{ navLabels.careers }}
+              </a>
+            </li>
+            <li>
+              <a routerLink="/contact" routerLinkActive="font-medium"
+                class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
+                (click)="closeMobileMenu()">
+                {{ navLabels.contact }}
+              </a>
+            </li>
+          </ul>
 
-  <div id="mobile-menu"
-    class="fixed inset-0 z-40 min-[1100px]:hidden transition-opacity duration-[400ms] ease-out"
-    [class.opacity-0]="!mobileMenuOpen" [class.opacity-100]="mobileMenuOpen" [class.invisible]="!mobileMenuOpen"
-    [class.pointer-events-none]="!mobileMenuOpen" [class.visible]="mobileMenuOpen">
-    <div class="flex flex-col mt-[90px] bg-bg-primary h-full transform transition-transform duration-[400ms] ease-out"
-      [class.translate-x-full]="!mobileMenuOpen" [class.translate-x-0]="mobileMenuOpen">
-      <div class="site-container flex flex-col mt-[44px]">
-        <ul class="flex flex-col gap-[40px] text-left list-none m-0 p-0">
-          <li>
-            <a routerLink="/product" routerLinkActive="font-medium"
-              class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-              (click)="closeMobileMenu()">
-              Produkte
-            </a>
-          </li>
-          <li>
-            <a routerLink="/about" routerLinkActive="font-medium"
-              class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-              (click)="closeMobileMenu()">
-              Über uns
-            </a>
-          </li>
-          <li>
-            <a routerLink="/careers" routerLinkActive="font-medium"
-              class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-              (click)="closeMobileMenu()">
-              Karriere
-            </a>
-          </li>
-          <li>
-            <a routerLink="/contact" routerLinkActive="font-medium"
-              class="text-text-body font-sans text-[24px] font-normal leading-normal no-underline block"
-              (click)="closeMobileMenu()">
-              Kontakt
-            </a>
-          </li>
-        </ul>
+          <div class="mb-8">
+            <p class="text-text-body font-sans text-[14px] font-medium mb-3 uppercase tracking-wide">
+              {{ currentLocale === 'de' ? 'Sprache / Language' : currentLocale === 'fr' ? 'Langue / Language' :
+              currentLocale === 'it' ? 'Lingua / Language' : 'Language' }}
+            </p>
+            <div class="flex flex-wrap gap-3">
+              @for (locale of supportedLocales; track locale) {
+              <button (click)="changeLocale(locale)"
+                class="px-4 py-2 text-[16px] font-sans rounded-md border transition-all duration-200 bg-transparent cursor-pointer"
+                [class.border-cta]="locale === currentLocale" [class.text-cta]="locale === currentLocale"
+                [class.font-medium]="locale === currentLocale" [class.border-[#E5E5E5]]="locale !== currentLocale"
+                [class.text-text-body]="locale !== currentLocale"
+                [class.hover:border-text-body]="locale !== currentLocale" type="button">
+                {{ localeLabels[locale] }}
+              </button>
+              }
+            </div>
+          </div>
 
-        <div class="w-full h-px bg-ai-gray-600 my-[60px]"></div>
-
-        <a routerLink="/contact"
-          class="flex items-center gap-[4px] text-cta font-sans text-[24px] font-medium no-underline arrow-link"
-          (click)="closeMobileMenu()">
-          <span>Termin vereinbaren</span>
-          <img src="assets/icons/Frame.svg" class="flex-shrink-0 arrow-link-icon" alt="" aria-hidden="true" />
-        </a>
+          <a routerLink="/contact"
+            class="flex items-center gap-[4px] text-cta font-sans text-[24px] font-medium no-underline"
+            (click)="closeMobileMenu()">
+            <span>{{ navLabels.cta }}</span>
+            <img src="assets/icons/Frame.svg" class="flex-shrink-0" alt="" aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </div>
   </div>

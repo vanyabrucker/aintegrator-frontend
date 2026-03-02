@@ -9,12 +9,25 @@ export class SanityService {
     private readonly client: SanityClient;
 
     constructor() {
+        console.log('🔧 Initializing Sanity Client with config:', {
+            projectId: environment.sanity.projectId,
+            dataset: environment.sanity.dataset,
+            apiVersion: environment.sanity.apiVersion,
+            useCdn: environment.sanity.useCdn,
+            perspective: (environment.sanity as any).perspective || 'published',
+        });
+
         this.client = createClient({
             projectId: environment.sanity.projectId,
             dataset: environment.sanity.dataset,
             apiVersion: environment.sanity.apiVersion,
             useCdn: environment.sanity.useCdn,
+            perspective: (environment.sanity as any).perspective || 'published',
+            token: undefined, // Public read access
+            ignoreBrowserTokenWarning: true,
         });
+
+        console.log('✅ Sanity Client initialized');
     }
 
     async fetch<T>(query: string, params?: QueryParams): Promise<T> {

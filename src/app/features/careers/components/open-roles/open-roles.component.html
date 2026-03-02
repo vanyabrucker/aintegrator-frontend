@@ -1,12 +1,19 @@
 <section class="site-container section-spacing">
     <div class="max-w-[1144px] mx-auto flex flex-col items-center gap-[40px] md:gap-[60px] xl:gap-[80px]">
-        <p
-            class="text-base md:text-xl max-w-[65ch] text-center font-normal text-ai-gray-850 leading-[1.5] m-0">
-            Wir suchen neugierige Köpfe mit vielfältigen Hintergründen und Perspektiven und freuen uns auch über Initiativbewerbungen an
-            <a href="mailto:careers@aintegrator.ch" class="text-base md:text-xl text-ai-gray-900 underline">
-                careers@aintegrator.ch
-            </a>
-        </p>
+        <h2 class="text-[28px] md:text-[40px] xl:text-[56px] font-medium text-center text-ai-gray-1000 m-0">
+            {{ openRolesTitle ? (openRolesTitle | localizedText) : 'Open Roles' }}
+        </h2>
+
+        <div class="max-w-[758px] mx-auto text-center">
+            <p class="text-base md:text-xl font-medium md:font-normal text-ai-gray-850 leading-[1.5] m-0">
+                {{ (initiativeText | localizedText) || 'We welcome unsolicited applications at' }} <br>
+                <a href="mailto:careers@aintegrator.ch"
+                    class="text-[16px] md:text-[20px] font-medium text-ai-gray-900 underline">
+                    careers@aintegrator.ch
+                </a>
+            </p>
+        </div>
+
         <div class="flex gap-[6px] md:gap-[24px] justify-center items-center w-full">
             <div class="relative">
                 <button type="button"
@@ -54,18 +61,19 @@
             @for (role of filteredRoles; track role.title) {
             <div
                 class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-ai-gray-650 pb-[32px] md:pb-[40px] gap-[24px] md:gap-0 last:border-b-0 last:pb-0">
-                <span class="text-base font-medium text-ai-gray-1000">
-                    {{ role.title }}
+                <span class="text-[20px] md:text-[20px] xl:text-[24px] font-medium text-ai-gray-1000">
+                    {{ role.title | localizedText }}
                 </span>
                 <div
                     class="flex flex-col md:flex-row items-start md:items-center gap-[24px] md:gap-[48px] xl:gap-[120px] w-full md:w-auto">
-                    <span class="text-base text-ai-gray-850 font-medium">
-                        {{ role.location }}
+                    <span class="text-[16px] md:text-[18px] xl:text-[24px] text-ai-gray-850 font-medium">
+                        {{ role.location | localizedText }}
                     </span>
                     <a [href]="role.link"
-                        class="text-[#D32F2F] text-base font-medium flex items-center no-underline leading-[26px] arrow-link">
-                        Jetzt bewerben
-                        <img src="assets/icons/Frame.svg" alt="Apply" class="max-md:w-[28px] max-md:h-[28px] arrow-link-icon">
+                        class="text-cta md:text-brand-red text-[16px] md:text-[18px] xl:text-[24px] font-medium flex items-center no-underline leading-[26px] arrow-link">
+                        {{ applyButtonLabel ? (applyButtonLabel | localizedText) : 'Jetzt bewerben' }}
+                        <img src="assets/icons/Frame.svg" alt="Apply"
+                            class="max-md:w-[28px] max-md:h-[28px] arrow-link-icon">
                     </a>
                 </div>
             </div>
@@ -73,8 +81,8 @@
         </div>
 
         <ng-template #emptyState>
-            <p class="text-base text-ai-gray-1000 text-center">
-                Aktuell keine offenen Positionen.
+            <p class="text-[18px] md:text-[24px] font-medium text-ai-gray-1000 text-center mt-[80px]">
+                {{ (noRolesText | localizedText) || 'No open positions at this time.' }}
             </p>
         </ng-template>
     </div>

@@ -11,4 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class TranscriptPanelComponent {
     @Input() transcriptData: any[] = [];
+    @Input() uploadButtonLabel = '';
+    @Input() recordButtonLabel = '';
+    @Input() summaryTabLabel = '';
+    @Input() transcriptTabLabel = '';
 }

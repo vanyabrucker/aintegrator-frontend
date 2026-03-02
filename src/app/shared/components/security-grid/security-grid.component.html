@@ -10,12 +10,11 @@
                 <div class="flex flex-col items-start text-left gap-[16px]">
                     <h3
                         class="text-black font-['Poppins'] font-medium text-[24px] lg:text-[28px] xl:text-[32px] mb-0 leading-normal">
-                        Hosted in Switzerland
+                        {{ cards[0]?.title | localizedText }}
                     </h3>
                     <p
                         class="text-ai-gray-850 font-['Poppins'] font-normal text-base md:text-xl leading-[26px] md:leading-normal xl:w-[396px]">
-                        Ihre Daten bleiben unter Ihrer Kontrolle. Datensouveränität und
-                        Datensicherheit haben für uns höchste Priorität.
+                        {{ cards[0]?.description | localizedText }}
                     </p>
                 </div>
             </div>
@@ -29,12 +28,11 @@
                 <div class="flex flex-col items-start text-left gap-[16px]">
                     <h3
                         class="text-black font-['Poppins'] font-medium text-[24px] lg:text-[28px] xl:text-[32px] mb-0 leading-normal">
-                        Einfach Sicher
+                        {{ cards[1]?.title | localizedText }}
                     </h3>
                     <p
                         class="text-ai-gray-850 font-['Poppins'] font-normal text-base md:text-xl leading-[26px] md:leading-normal xl:w-[396px]">
-                        Vertraut von Teams in Regierung, Finanzen, Recht und Gesundheitswesen – LiaSuite bietet
-                        Schweizer Sicherheit.
+                        {{ cards[1]?.description | localizedText }}
                     </p>
                 </div>
             </div>
@@ -48,7 +46,7 @@
                     </h3>
                     <p
                         class="text-ai-gray-850 font-['Poppins'] font-normal text-base md:text-xl leading-[26px] md:leading-normal xl:w-[637px]">
-                        LiaSuite ist DSG- und DSGVO-konform und wird in der Schweiz betrieben.
+                        {{ footerCardDescription | localizedText }}
                     </p>
                 </div>
                 <div class="flex items-center gap-[21px] xl:gap-[24px] w-full max-w-[133px] xl:max-w-none">
@@ -56,13 +54,15 @@
                         <img src="assets/icons/gdpr.png" alt="GDPR"
                             class="w-[56px] h-[56px] xl:w-[60px] xl:h-[60px] object-contain" />
                         <span
-                            class="text-black xl:text-ai-gray-850 font-['Poppins'] text-[10.691px] xl:text-[12px] font-medium leading-normal">GDPR</span>
+                            class="text-black xl:text-ai-gray-850 font-['Poppins'] text-[10.691px] xl:text-[12px] font-medium leading-normal">{{
+                            badgeLabels[0]?.text | localizedText }}</span>
                     </div>
                     <div class="flex flex-col items-center gap-[9.164px] w-[56px] xl:w-auto">
                         <img src="assets/icons/dsg.png" alt="DSG"
                             class="w-[56px] h-[56px] xl:w-[60px] xl:h-[60px] object-contain" />
                         <span
-                            class="text-black xl:text-ai-gray-850 font-['Poppins'] text-[10.691px] xl:text-[12px] font-medium leading-normal">DSG</span>
+                            class="text-black xl:text-ai-gray-850 font-['Poppins'] text-[10.691px] xl:text-[12px] font-medium leading-normal">{{
+                            badgeLabels[1]?.text | localizedText }}</span>
                     </div>
                 </div>
             </div>

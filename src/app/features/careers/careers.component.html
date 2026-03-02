@@ -1,5 +1,20 @@
 <div class="w-full flex flex-col">
-    <app-careers-hero></app-careers-hero>
+    <app-careers-hero [heroTitle]="careersPageData()?.heroTitle" [heroDescription]="careersPageData()?.heroDescription">
+    </app-careers-hero>
 
-    <app-open-roles [roles]="roles"></app-open-roles>
+    <app-principles-mv-section [showMv]="false" [isPrinciplesDesktop]="true" [values]="careersPageData()?.values">
+    </app-principles-mv-section>
+
+    <app-open-roles [roles]="roles" [openRolesTitle]="careersPageData()?.openRolesTitle"
+        [departmentFilterLabel]="careersPageData()?.departmentFilterLabel"
+        [locationFilterLabel]="careersPageData()?.locationFilterLabel"
+        [applyButtonLabel]="careersPageData()?.applyButtonLabel" [initiativeText]="careersPageData()?.initiativeText"
+        [noRolesText]="careersPageData()?.noRolesText">
+    </app-open-roles>
+
+    <app-initiative-cta [initiativeCTATitle]="careersPageData()?.initiativeCTATitle"
+        [initiativeCTADescription]="careersPageData()?.initiativeCTADescription"
+        [initiativeEmail]="careersPageData()?.initiativeEmail" [initiativeText]="careersPageData()?.initiativeText"
+        class="block section-spacing">
+    </app-initiative-cta>
 </div>

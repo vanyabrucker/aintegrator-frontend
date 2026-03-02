@@ -2,13 +2,15 @@
     <div class="flex flex-col items-center gap-[40px] lg:gap-[80px]">
 
         <div class="flex flex-col items-center gap-[16px] lg:gap-[24px] w-full max-w-[342px] lg:max-w-none">
-            <div class="flex items-center justify-center w-full">
-                <img src="assets/images/liachat_logo.svg" alt="LiaChat"
-                    class="h-[48px] lg:h-[64px] w-auto object-contain">
+            <div class="flex items-start gap-[7.792px] lg:gap-[12px] h-[50px] lg:h-[77px] justify-center w-full">
+                <div class="flex items-center justify-center">
+                    <img src="assets/images/products/lia-chat.svg" [attr.alt]="title || 'LiaChat'"
+                        class="h-[36px] lg:h-[56px] object-contain" />
+                </div>
             </div>
             <p
                 class="text-ai-gray-850 text-center font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-[148%]">
-                Sichere ChatGPT-Alternative
+                {{ subtitle | localizedText }}
             </p>
         </div>
 
@@ -25,19 +27,43 @@
                         <img src="assets/icons/Group 243.png" alt=""
                             class="w-[40px] h-[32px] lg:w-[55.539px] lg:h-[48px] object-contain">
                         <h3
-                            class="text-center font-['Poppins',_sans-serif] text-base md:text-xl font-medium leading-normal">
-                            <span>
-                                <span class="text-ai-gray-950">Wie kann ich Ihnen behilflich sein?</span>
+                            class="text-center font-['Poppins',_sans-serif] text-[16px] lg:text-[24px] font-medium leading-normal">
+                            <span class="lg:hidden">
+                                <span class="text-ai-gray-950">{{ promptMobile | localizedText }}</span>
                             </span>
-                        </h3>    
+                            <span class="hidden lg:inline text-ai-gray-950">{{ promptDesktop | localizedText }}</span>
+                        </h3>
                     </div>
 
                     <div
-                        class="chat-input-shell w-full max-w-[514px] rounded-xl border border-ai-gray-300 bg-white shadow-[0_8px_24px_-5px_rgba(0,0,0,0.10)] flex items-end justify-between p-3 shrink-0">
-                        <span class="chat-input-text text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] lg:text-[14px] font-normal leading-normal">{{
-                            displayedText }}</span>
+                        class="w-full max-w-[514px] h-[40px] lg:h-[55px] max-h-[55px] rounded-[28px] border border-ai-gray-300 bg-white shadow-[0_8px_24px_-5px_rgba(0,0,0,0.10)] flex items-center justify-between px-[20px] shrink-0">
+                        <span
+                            class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] lg:text-[14px] font-normal leading-normal whitespace-nowrap overflow-hidden text-ellipsis">{{
+                            inputPlaceholder | localizedText }}</span>
                         <img src="assets/icons/Group 2281.png" alt=""
-                            class="w-[24px] h-[24px] lg:w-[31px] lg:h-[31px] object-contain self-end">
+                            class="w-[24px] h-[24px] lg:w-[31px] lg:h-[31px] object-contain cursor-pointer">
+                    </div>
+
+                    <div class="flex flex-col items-center lg:items-start gap-[12px] w-full lg:hidden">
+                        <div
+                            class="flex h-[24px] px-[12px] py-[8px] justify-center items-center gap-[2px] rounded-[24px] border border-ai-gray-650">
+                            <span
+                                class="text-ai-gray-850 text-center font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">{{
+                                (quickActions[0] || '') | localizedText }}</span>
+                        </div>
+                        <div
+                            class="flex h-[24px] px-[12px] py-[8px] justify-center items-center gap-[2px] rounded-[24px] border border-ai-gray-650">
+                            <span
+                                class="text-ai-gray-850 text-center font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">Create
+                                {{
+                                (quickActions[1] || '') | localizedText }}</span>
+                        </div>
+                        <div
+                            class="flex h-[24px] px-[12px] py-[8px] justify-center items-center gap-[2px] rounded-[24px] border border-ai-gray-650">
+                            <span
+                                class="text-ai-gray-850 text-center font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">{{
+                                (quickActions[2] || '') | localizedText }}</span>
+                        </div>
                     </div>
 
                 </div>

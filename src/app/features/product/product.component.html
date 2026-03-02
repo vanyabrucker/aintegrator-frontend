@@ -1,22 +1,118 @@
 <main class="flex flex-col">
+    @if (productData(); as data) {
+    <app-hero [title]="data.heroTitle | localizedText" [description]="data.heroDescription | localizedText"
+        [showButton]="data.heroShowButton ?? true" [buttonLabel]="data.heroButtonLabel | localizedText"
+        titleMaxWidthClass="md:max-w-[865px]">
+    </app-hero>
+    } @else {
     <app-hero title="Sicherer AI-Vorsprung für Schweizer Unternehmen"
         description="Maximale Produktivität bei 100% Datensouveränität. Chat und Meeting-Intelligence – Sofort einsatzbereit."
         [showButton]="true" buttonLabel="LiaSuite testen"
         buttonLink="https://aintegrator.notion.site/314a7ccd21c380549a39dec535c388a4"
-        titleMaxWidthClass="md:max-w-[865px]"
-        [showMobileHeroDots]="true" mobileMarginClass="mt-[125px] mb-[125px] xl:mt-[224px] xl:mb-0"
-        mobileDotsClass="top-[40px] left-0 w-[400px]">
+        titleMaxWidthClass="md:max-w-[865px]" [showMobileHeroDots]="true"
+        mobileMarginClass="mt-[125px] mb-[125px] xl:mt-[224px] xl:mb-0" mobileDotsClass="top-[40px] left-0 w-[400px]">
     </app-hero>
+    }
 
-    <app-info-section></app-info-section>
+    @if (productData(); as data) {
+    <app-info-section [highlightText]="data.infoBanner?.highlightText | localizedText"
+        [bodyText]="data.infoBanner?.bodyText | localizedText">
+    </app-info-section>
 
-    <app-meeting-analysis></app-meeting-analysis>
-    <app-integrations-section></app-integrations-section>
-    <app-meeting-transcription></app-meeting-transcription>
-    <app-meeting-summary></app-meeting-summary>
-    <app-agentic-actions></app-agentic-actions>
-    <app-lia-chat></app-lia-chat>
-    <app-bolts-section></app-bolts-section>
-    <app-security-grid></app-security-grid>
-    <app-pricing-grid></app-pricing-grid>
+    <app-meeting-analysis [title]="data.meetingAnalysis?.title | localizedText"
+        [subtitle]="data.meetingAnalysis?.subtitle | localizedText"
+        [participants]="getParticipantNames(data.meetingAnalysis?.participants)"
+        [transcriptData]="getTranscriptEntries(data.meetingAnalysis?.transcriptEntries)"
+        [uploadButtonLabel]="getLocalizedText(data.meetingSummary?.uploadButtonLabel)"
+        [recordButtonLabel]="getLocalizedText(data.meetingSummary?.recordButtonLabel)"
+        [summaryTabLabel]="getLocalizedText(data.meetingSummary?.summaryTabLabel)"
+        [transcriptTabLabel]="getLocalizedText(data.meetingSummary?.transcriptTabLabel)">
+    </app-meeting-analysis>
+
+    <app-integrations-section [title]="data.integrations?.title | localizedText"
+        [description]="data.integrations?.description | localizedText"
+        [calendarDayLabel]="getLocalizedText(data.integrations?.calendarDayLabel)"
+        [calendarDayNumber]="getLocalizedText(data.integrations?.calendarDayNumber)"
+        [meetingTitle]="getLocalizedText(data.integrations?.meetingTitle)"
+        [timeRange]="getLocalizedText(data.integrations?.timeRange)"
+        [durationLabel]="getLocalizedText(data.integrations?.durationLabel)"
+        [participants]="data.integrations?.participants || []" [cards]="getIntegrationsCards(data.integrations?.cards)">
+    </app-integrations-section>
+
+    <app-meeting-transcription [title]="data.meetingTranscription?.title | localizedText"
+        [description]="data.meetingTranscription?.description | localizedText"
+        [transcriptData]="getTranscriptEntries(data.meetingTranscription?.transcriptEntries)"
+        [uploadButtonLabel]="getLocalizedText(data.meetingSummary?.uploadButtonLabel)"
+        [recordButtonLabel]="getLocalizedText(data.meetingSummary?.recordButtonLabel)"
+        [summaryTabLabel]="getLocalizedText(data.meetingSummary?.summaryTabLabel)"
+        [transcriptTabLabel]="getLocalizedText(data.meetingSummary?.transcriptTabLabel)">
+    </app-meeting-transcription>
+
+    <app-meeting-summary [title]="data.meetingSummary?.title | localizedText"
+        [description]="data.meetingSummary?.description | localizedText"
+        [descriptionHighlight]="data.meetingSummary?.descriptionHighlight | localizedText"
+        [uploadButtonLabel]="getLocalizedText(data.meetingSummary?.uploadButtonLabel)"
+        [recordButtonLabel]="getLocalizedText(data.meetingSummary?.recordButtonLabel)"
+        [summaryTabLabel]="getLocalizedText(data.meetingSummary?.summaryTabLabel)"
+        [transcriptTabLabel]="getLocalizedText(data.meetingSummary?.transcriptTabLabel)"
+        [summaryTitle]="getLocalizedText(data.meetingSummary?.summaryTitle)"
+        [summaryText]="data.meetingSummary?.summaryText | localizedText"
+        [discussionTitle]="getLocalizedText(data.meetingSummary?.discussionTitle)"
+        [discussionPoints]="getDiscussionPoints(data.meetingSummary?.discussionPoints)">
+    </app-meeting-summary>
+
+    <app-agentic-actions [badgeLabel]="getLocalizedText(data.agenticActions?.badgeLabel)"
+        [title]="data.agenticActions?.title | localizedText"
+        [description]="data.agenticActions?.description | localizedText"
+        [mobileCards]="getMobileCards(data.agenticActions?.mobileCards)"
+        [actionItemsTitle]="getLocalizedText(data.agenticActions?.actionItemsTitle)"
+        [actionItems]="getActionItems(data.agenticActions?.actionItems)">
+    </app-agentic-actions>
+
+    <app-lia-chat [title]="getLocalizedText(data.liaChat?.title)" [subtitle]="data.liaChat?.subtitle | localizedText"
+        [promptMobile]="getLocalizedText(data.liaChat?.promptMobile)"
+        [promptDesktop]="getLocalizedText(data.liaChat?.promptDesktop)"
+        [inputPlaceholder]="getLocalizedText(data.liaChat?.inputPlaceholder)"
+        [quickActions]="getBoltsCarouselItems(data.liaChat?.quickActions)">
+    </app-lia-chat>
+
+    <app-bolts-section [title]="data.bolts?.title | localizedText"
+        [description]="data.bolts?.description | localizedText"
+        [formTitleDesktop]="getLocalizedText(data.bolts?.formTitleDesktop)"
+        [formTitleMobile]="getLocalizedText(data.bolts?.formTitleMobile)"
+        [nameLabel]="getLocalizedText(data.bolts?.nameLabel)"
+        [namePlaceholderDesktop]="getLocalizedText(data.bolts?.namePlaceholderDesktop)"
+        [namePlaceholderMobile]="getLocalizedText(data.bolts?.namePlaceholderMobile)"
+        [promptLabelDesktop]="getLocalizedText(data.bolts?.promptLabelDesktop)"
+        [promptLabelMobile]="getLocalizedText(data.bolts?.promptLabelMobile)"
+        [promptPlaceholderDesktop]="getLocalizedText(data.bolts?.promptPlaceholderDesktop)"
+        [promptPlaceholderMobile]="getLocalizedText(data.bolts?.promptPlaceholderMobile)"
+        [submitLabel]="getLocalizedText(data.bolts?.submitLabel)"
+        [carouselItems]="getBoltsCarouselItems(data.bolts?.carouselItems)">
+    </app-bolts-section>
+
+    <app-security-grid [cards]="getSecurityCards(data.securityGrid?.cards)"
+        [footerCardTitle]="data.securityGrid?.footerCardTitle || ''"
+        [footerCardDescription]="data.securityGrid?.footerCardDescription | localizedText"
+        [badgeLabels]="getBadgeLabels(data.securityGrid?.badgeLabels)">
+    </app-security-grid>
+
+    <app-pricing-grid [title]="data.pricingGrid?.title | localizedText"
+        [plans]="getPricingPlans(data.pricingGrid?.plans)">
+    </app-pricing-grid>
+
+    <app-final-cta [title]="data.finalCta?.title | localizedText"
+        [description]="data.finalCta?.description | localizedText"
+        [primaryBtnText]="getLocalizedText(data.finalCta?.primaryBtnText)"
+        [primaryBtnLink]="data.finalCta?.primaryBtnLink || 'https://aintegrator.notion.site/314a7ccd21c380549a39dec535c388a4'"
+        [secondaryBtnText]="getLocalizedText(data.finalCta?.secondaryBtnText)"
+        [secondaryBtnLink]="data.finalCta?.secondaryBtnLink || '/contact'"
+        [mobilePrimaryBtnText]="getLocalizedText(data.finalCta?.mobilePrimaryBtnText)"
+        [descriptionMaxWidthClass]="'max-w-[323px] md:max-w-[528px]'"
+        [decorationPositionClass]="'top-[158px] md:top-[120px]'" [secondaryBtnIcon]="'assets/icons/Frame.png'"
+        [primaryBtnIcon]="'assets/icons/Frame.svg'" [showMobileDecoration]="true"
+        [mobileDecorationClass]="'w-[195px] h-auto top-[248px] left-[-35px] md:w-[260px] md:top-[185px] md:left-[-25px] lg:top-[185px] opacity-100'"
+        class="block section-spacing">
+    </app-final-cta>
+    }
 </main>

@@ -2,12 +2,13 @@
     <div class="flex flex-col lg:flex-row items-center justify-between gap-[40px] lg:gap-0 self-stretch">
 
         <div class="w-full lg:flex-1 lg:max-w-[445px] flex flex-col items-center lg:items-start gap-[24px]">
-            <h2 class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[24px] lg:text-[32px] font-medium leading-normal">
-                Zeit sparen mit Bolts
-            </h2>
+            <div class="flex items-center justify-center lg:justify-start">
+                <img src="assets/images/products/lia-suite.svg" [attr.alt]="title || 'LiaSuite'"
+                    class="h-[24px] lg:h-[32px] object-contain" />
+            </div>
             <p
-                class="text-ai-gray-800 text-center lg:text-left font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-normal max-w-[323px] lg:max-w-none">
-                Standardisierte Prompts für wiederkehrende Aufgaben — konsistente Ergebnisse bei weniger Aufwand.
+                class="text-ai-gray-800 text-center lg:text-left font-['Poppins',_sans-serif] text-[14px] lg:text-[16px] font-normal leading-normal max-w-[323px] lg:max-w-none">
+                {{ description | localizedText }}
             </p>
         </div>
 
@@ -19,21 +20,21 @@
                     class="w-full min-h-[392px] lg:min-h-[408px] bg-white rounded-[12px] p-[24px] lg:p-[36px] flex flex-col items-start lg:h-auto shrink-0">
                     <h3
                         class="text-ai-gray-850 w-full text-left font-['Poppins',_sans-serif] text-[20px] lg:text-[24px] font-medium leading-normal mb-[21px] lg:mb-[16px]">
-                        <span class="lg:hidden">Create Bolt</span>
-                        <span class="hidden lg:inline">Bolt Erstellen</span>
+                        <span class="lg:hidden">{{ formTitleMobile | localizedText }}</span>
+                        <span class="hidden lg:inline">{{ formTitleDesktop | localizedText }}</span>
                     </h3>
 
                     <div class="flex flex-col gap-[13px] lg:gap-[12px] mb-[20px] w-full items-start">
                         <span
                             class="text-ai-gray-850 w-full font-['Poppins',_sans-serif] text-[14px] font-medium leading-normal">
-                            Name
+                            {{ nameLabel | localizedText }}
                         </span>
                         <div
                             class="w-full h-[48px] rounded-[12px] border border-ai-gray-650 bg-white flex items-center px-[16px]">
                             <span
                                 class="text-[rgba(77,77,77,0.50)] font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">
-                                <span class="lg:hidden">Name eingeben</span>
-                                <span class="hidden lg:inline">Empathie-Modus Bolt</span>
+                                <span class="lg:hidden">{{ namePlaceholderMobile | localizedText }}</span>
+                                <span class="hidden lg:inline">{{ namePlaceholderDesktop | localizedText }}</span>
                             </span>
                         </div>
                     </div>
@@ -41,23 +42,22 @@
                     <div class="flex flex-col gap-[11px] lg:gap-[12px] mb-[24px] w-full items-start">
                         <span
                             class="text-ai-gray-850 w-full font-['Poppins',_sans-serif] text-[14px] font-medium leading-normal">
-                            <span class="lg:hidden">Nachricht</span>
-                            <span class="hidden lg:inline">Prompt</span>
+                            <span class="lg:hidden">{{ promptLabelMobile | localizedText }}</span>
+                            <span class="hidden lg:inline">{{ promptLabelDesktop | localizedText }}</span>
                         </span>
                         <div class="w-full h-[90px] rounded-[12px] border border-ai-gray-650 bg-white p-[16px]">
                             <p
                                 class="w-full text-[rgba(77,77,77,0.50)] font-['Poppins',_sans-serif] text-[12px] font-normal leading-normal">
-                                <span class="lg:hidden">Nachricht eingeben</span>
-                                <span class="hidden lg:inline">Bitte überarbeite diesen Text so, dass er freundlicher,
-                                    ruhiger und weniger fordernd wirkt – ohne die Kernaussage zu verlieren.</span>
+                                <span class="lg:hidden">{{ promptPlaceholderMobile | localizedText }}</span>
+                                <span class="hidden lg:inline">{{ promptPlaceholderDesktop | localizedText }}</span>
                             </p>
                         </div>
                     </div>
 
                     <button
-                        class="w-[111px] !h-[36px] shrink-0 rounded-[12px] bg-[#D32F2F] lg:bg-[#ED2915] flex items-center justify-center cursor-default">
+                        class="w-[111px] h-[36px] shrink-0 rounded-[12px] bg-cta lg:bg-brand-red flex items-center justify-center cursor-pointer transition-opacity hover:opacity-90">
                         <span class="text-white font-['Poppins',_sans-serif] text-[14px] font-medium leading-normal">
-                            Erstellen
+                            {{ submitLabel | localizedText }}
                         </span>
                     </button>
                 </div>
@@ -69,48 +69,46 @@
                     <div class="carousel-set">
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/calendarsvg.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Ins
-                                Französische übersetzen</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                (carouselItems[0] || '') | localizedText }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/message.png" alt="" class="w-[16px] h-[16px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Nachricht
-                                verbessern</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                (carouselItems[1] || '') | localizedText }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/mail.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">E-Mail
-                                formulieren</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                (carouselItems[2] || '') | localizedText }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/calendarsvg.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span
-                                class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Zusammenfassung
-                                erstellen</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                (carouselItems[3] || '') | localizedText }}</span>
                         </div>
                         <div class="w-[12px] lg:w-[24px] shrink-0"></div>
                     </div>
                     <div class="carousel-set">
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/calendarsvg.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Ins
-                                Französische übersetzen</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                carouselItems[0] || '' }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/message.png" alt="" class="w-[16px] h-[16px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Nachricht
-                                verbessern</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                carouselItems[1] || '' }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/mail.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">E-Mail
-                                formulieren</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                carouselItems[2] || '' }}</span>
                         </div>
                         <div class="flex items-center gap-[12px] whitespace-nowrap shrink-0">
                             <img src="assets/icons/calendarsvg.png" alt="" class="w-[18px] h-[18px] object-contain">
-                            <span
-                                class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">Zusammenfassung
-                                erstellen</span>
+                            <span class="text-ai-gray-750 font-['Poppins',_sans-serif] text-[14px] font-normal">{{
+                                carouselItems[3] || '' }}</span>
                         </div>
                         <div class="w-[12px] lg:w-[24px] shrink-0"></div>
                     </div>

@@ -1,59 +1,54 @@
-<section class="w-full section-spacing bg-white font-['Poppins',_sans-serif]">
-    <div class="mx-auto flex flex-col items-center gap-[24px] md:gap-0 site-container">
-        <div class="max-w-[781px] w-full flex flex-col items-center gap-[24px] md:mb-[80px]">
+<section class="w-full section-spacing bg-white font-sans">
+    <div class="mx-auto flex flex-col items-center gap-6 md:gap-0 site-container">
+        <div class="max-w-[781px] w-full flex flex-col items-center gap-6 md:mb-20">
             <h2
-                class="text-ai-gray-1000 text-center font-['Poppins',_sans-serif] text-[32px] min-[768px]:text-[40px] min-[1024px]:text-[48px] xl:text-[56px] font-medium leading-tight xl:whitespace-nowrap">
-                Lia arbeitet, wo Sie arbeiten
+                class="text-ai-gray-1000 text-center font-sans text-3xl md:text-4xl lg:text-5xl xl:text-[56px] font-medium leading-tight xl:whitespace-nowrap">
+                {{ title | localizedText }}
             </h2>
-            <p
-                class="text-ai-gray-850 text-center font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-[148%]">
-                Synchronisiert sich mit Ihrem Microsoft oder Google Kalendar um automatisch alle Ihre Meetings zu
-                transkribieren.
+            <p class="text-ai-gray-850 text-center font-sans text-base md:text-xl font-normal leading-[148%]">
+                {{ description | localizedText }}
             </p>
         </div>
 
         <div
-            class="w-full h-auto lg:h-[595px] rounded-[12px] bg-ai-gray-100 flex flex-col px-6 lg:px-[60px] xl:px-[80px] pt-[32px] pb-[35px] lg:pt-[60px] mt-[16px] lg:mt-0 md:mb-[60px]">
+            class="w-full h-auto lg:h-[595px] rounded-[12px] bg-ai-gray-100 flex flex-col px-6 lg:px-[60px] xl:px-20 pt-8 pb-[35px] lg:pt-[60px] mt-4 lg:mt-0 md:mb-[60px]">
             <div class="flex items-center justify-between w-full">
                 <img src="assets/icons/left.png" alt="Previous"
-                    class="w-[36px] h-[36px] max-[767px]:!w-[24px] max-[767px]:!h-[24px] max-[767px]:aspect-square">
-                <h3 class="font-['Poppins',_sans-serif] text-[24px] md:text-[40px] font-medium leading-none">
+                    class="w-6 h-6 md:w-9 md:h-9 aspect-square cursor-pointer">
+                <h3 class="font-sans text-2xl md:text-[40px] font-medium leading-none">
                     <span class="text-ai-gray-1000">{{ currentDayName }}, </span>
                     <span class="text-ai-gray-850">{{ currentDayNumber }} {{ currentMonth }}</span>
                 </h3>
-                <img src="assets/icons/right.png" alt="Next"
-                    class="w-[36px] h-[36px] max-[767px]:!w-[24px] max-[767px]:!h-[24px] max-[767px]:aspect-square">
+                <img src="assets/icons/right.png" alt="Next" class="w-6 h-6 md:w-9 md:h-9 aspect-square cursor-pointer">
             </div>
 
-            <div class="flex flex-row mt-[36px] lg:mt-0">
+            <div class="flex flex-row mt-9 lg:mt-0">
                 <div
-                    class="flex flex-col lg:pt-[70px] min-w-[130px] max-[767px]:!min-w-[80px] max-[767px]:!mt-[8px] min-[500px]:max-[767px]:!min-w-[160px] min-[768px]:max-[1023px]:!min-w-[200px] min-[1024px]:max-[1279px]:!min-w-[260px]">
+                    class="flex flex-col lg:pt-[70px] min-w-[80px] sm:min-w-[130px] md:min-w-[200px] lg:min-w-[130px] xl:min-w-[260px] mt-2 lg:mt-0">
                     <div class="flex flex-col">
                         <span
-                            class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[24px] min-[1024px]:text-[32px] max-[767px]:!text-[16px] max-[767px]:!leading-[100%] min-[768px]:max-[1023px]:!text-[28px] font-medium">08:00</span>
-                        <div
-                            class="flex flex-col gap-[32px] lg:gap-[56px] mt-[24px] lg:mt-[36px] pl-1 max-[767px]:!pl-0">
+                            class="text-ai-gray-850 font-sans text-base md:text-2xl lg:text-3xl font-medium">08:00</span>
+                        <div class="flex flex-col gap-8 lg:gap-14 mt-6 lg:mt-9 pl-0 lg:pl-1">
                             <div
-                                class="h-[1px] bg-ai-gray-650 w-[79px] max-[767px]:!w-[51px] min-[500px]:max-[767px]:!w-[60px] min-[768px]:max-[1023px]:!w-[90px] min-[1024px]:max-[1279px]:!w-[130px]">
+                                class="h-[1px] bg-ai-gray-650 w-[51px] sm:w-[79px] md:w-[90px] lg:w-[79px] xl:w-[130px]">
                             </div>
                             <div
-                                class="h-[1px] bg-[#ED2915] w-[128px] max-[767px]:!w-[31px] min-[500px]:max-[767px]:!w-[100px] min-[768px]:max-[1023px]:!w-[140px] min-[1024px]:max-[1279px]:!w-[180px]">
+                                class="h-[1px] bg-brand-red w-[100px] sm:w-[128px] md:w-[140px] lg:w-[128px] xl:w-[180px]">
                             </div>
                             <div
-                                class="h-[1px] bg-ai-gray-650 w-[79px] max-[767px]:!w-[49px] min-[500px]:max-[767px]:!w-[60px] min-[768px]:max-[1023px]:!w-[90px] min-[1024px]:max-[1279px]:!w-[130px]">
+                                class="h-[1px] bg-ai-gray-650 w-[49px] sm:w-[79px] md:w-[90px] lg:w-[79px] xl:w-[130px]">
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col mt-[32px] lg:mt-[39px]">
+                    <div class="flex flex-col mt-8 lg:mt-[39px]">
                         <span
-                            class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[24px] min-[1024px]:text-[32px] max-[767px]:!text-[16px] max-[767px]:!leading-[100%] min-[768px]:max-[1023px]:!text-[28px] font-medium">10:00</span>
-                        <div
-                            class="flex flex-col gap-[32px] lg:gap-[56px] mt-[32px] lg:mt-[36px] pl-1 max-[767px]:!pl-0">
+                            class="text-ai-gray-850 font-sans text-base md:text-2xl lg:text-3xl font-medium">10:00</span>
+                        <div class="flex flex-col gap-8 lg:gap-14 mt-8 lg:mt-9 pl-0 lg:pl-1">
                             <div
-                                class="h-[1px] bg-ai-gray-650 w-[129px] max-[767px]:!w-[51px] min-[500px]:max-[767px]:!w-[100px] min-[768px]:max-[1023px]:!w-[140px] min-[1024px]:max-[1279px]:!w-[180px]">
+                                class="h-[1px] bg-ai-gray-650 w-[51px] sm:w-[100px] md:w-[140px] lg:w-[129px] xl:w-[180px]">
                             </div>
                             <div
-                                class="h-[1px] bg-ai-gray-650 w-[129px] max-[767px]:!w-[22px] min-[500px]:max-[767px]:!w-[100px] min-[768px]:max-[1023px]:!w-[140px] min-[1024px]:max-[1279px]:!w-[180px]">
+                                class="h-[1px] bg-ai-gray-650 w-[22px] sm:w-[100px] md:w-[140px] lg:w-[129px] xl:w-[180px]">
                             </div>
                         </div>
                     </div>
@@ -61,42 +56,50 @@
 
                 <div class="flex-1 flex items-start justify-end lg:mt-[55px]">
                     <div
-                        class="w-full max-w-[707px] min-[768px]:max-[1023px]:!max-w-[580px] min-[1024px]:max-[1279px]:!max-w-[640px] min-[500px]:max-[767px]:!max-w-[480px] min-[500px]:max-[767px]:ml-auto h-auto p-[24px] min-[1024px]:h-[343px] min-[1024px]:p-[48px] max-[767px]:!p-[19px_20px_18px_20px] max-[767px]:!gap-0 rounded-[12px] bg-white flex flex-col">
+                        class="w-full max-w-[480px] sm:max-w-[707px] md:max-w-[580px] lg:max-w-[707px] xl:max-w-[707px] ml-auto h-auto lg:h-[343px] p-5 lg:p-12 rounded-[12px] bg-white flex flex-col">
                         <div class="flex items-center justify-between">
                             <h4
-                                class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[20px] min-[1024px]:text-[24px] max-[767px]:!text-[14px] max-[767px]:!leading-normal font-medium">
-                                Projektupdate Meeting</h4>
-                            <lucide-icon [img]="ellipsisIcon" [size]="36"
-                                class="text-ai-gray-750 max-[767px]:!w-[16px] max-[767px]:!h-[16px] max-[767px]:!ml-[17px]"></lucide-icon>
+                                class="text-ai-gray-1000 font-sans text-sm md:text-xl lg:text-2xl font-medium leading-normal">
+                                {{ meetingTitle }}</h4>
+                            <lucide-icon [img]="ellipsisIcon" [size]="24"
+                                class="text-ai-gray-750 md:w-9 md:h-9 ml-4 md:ml-0"></lucide-icon>
                         </div>
 
-                        <div
-                            class="flex items-center gap-[7px] min-[1024px]:inline-flex min-[1024px]:gap-[4px] mt-[8px] lg:mt-[12px]">
+                        <div class="flex items-center gap-[7px] mt-2 lg:mt-3">
                             <span
-                                class="text-ai-gray-850 font-['Poppins',_sans-serif] text-[12px] min-[1024px]:text-[16px] font-normal leading-[100%]">09:30
-                                - 11:30 Uhr</span>
+                                class="text-ai-gray-850 font-sans text-[12px] lg:text-base font-normal leading-none">{{
+                                timeRange }}</span>
+                            <div
+                                class="flex h-5 lg:h-auto p-2 lg:py-2 lg:px-3 justify-center items-center gap-[10px] rounded-full bg-cta/[0.03]">
+                                <span
+                                    class="text-brand-red font-sans text-[12px] lg:text-base font-medium leading-none text-center">{{
+                                    durationLabel }}</span>
+                            </div>
                         </div>
 
-                        <div class="flex flex-col gap-[12px] lg:gap-[24px] mt-[12px] lg:mt-[23px]">
-                            <div class="flex items-center gap-[8px] lg:gap-[16px]">
+                        <div class="flex flex-col gap-3 lg:gap-6 mt-3 lg:mt-[23px]">
+                            <div class="flex items-center gap-2 lg:gap-4">
                                 <div
-                                    class="w-[36px] h-[36px] max-[767px]:!w-[24px] max-[767px]:!h-[24px] rounded-full bg-ai-gray-100 flex items-center justify-center font-medium max-[767px]:text-[10px]">
+                                    class="w-6 h-6 md:w-9 md:h-9 rounded-full bg-ai-gray-100 flex items-center justify-center font-medium text-[10px] md:text-base flex-shrink-0">
                                     M</div>
                                 <span
-                                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[16px] max-[767px]:!text-[12px] max-[767px]:!leading-normal font-medium">Monica</span>
+                                    class="text-ai-gray-1000 font-sans text-[12px] md:text-base font-medium leading-normal">{{
+                                    participants[0] || '' }}</span>
                             </div>
-                            <div class="flex items-center gap-[8px] lg:gap-[16px]">
+                            <div class="flex items-center gap-2 lg:gap-4">
                                 <div
-                                    class="w-[36px] h-[36px] max-[767px]:!w-[24px] max-[767px]:!h-[24px] rounded-full bg-ai-gray-100 flex items-center justify-center font-medium max-[767px]:text-[10px]">
+                                    class="w-6 h-6 md:w-9 md:h-9 rounded-full bg-ai-gray-100 flex items-center justify-center font-medium text-[10px] md:text-base flex-shrink-0">
                                     S</div>
                                 <span
-                                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[16px] max-[767px]:!text-[12px] max-[767px]:!leading-normal font-medium">Stephane</span>
+                                    class="text-ai-gray-1000 font-sans text-[12px] md:text-base font-medium leading-normal">{{
+                                    participants[1] || '' }}</span>
                             </div>
-                            <div class="flex items-center gap-[8px] lg:gap-[16px]">
+                            <div class="flex items-center gap-2 lg:gap-4">
                                 <img src="assets/images/Group 2969.png" alt="Lia"
-                                    class="w-[36px] h-[36px] max-[767px]:!w-[24px] max-[767px]:!h-[24px] rounded-full bg-ai-gray-100 flex items-center justify-center font-medium">
+                                    class="w-6 h-6 md:w-9 md:h-9 rounded-full flex-shrink-0">
                                 <span
-                                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[16px] max-[767px]:!text-[12px] max-[767px]:!leading-normal font-medium">Lia</span>
+                                    class="text-ai-gray-1000 font-sans text-[12px] md:text-base font-medium leading-normal">{{
+                                    participants[2] || '' }}</span>
                             </div>
                         </div>
                     </div>
@@ -104,40 +107,40 @@
             </div>
         </div>
 
-        <div
-            class="w-full flex flex-col md:flex-row items-center justify-between gap-[24px] md:gap-[40px] lg:gap-[52px]">
+        <div class="w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 lg:gap-[52px]">
             <div
-                class="flex-1 w-full md:w-auto h-auto lg:h-[224px] p-[40px] lg:p-[48px] min-[768px]:max-[1279px]:!p-[32px] min-[768px]:max-[1279px]:!h-auto min-[768px]:max-[1279px]:!gap-[24px] rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-[32px] max-[767px]:!flex max-[767px]:!p-[24px] max-[767px]:!flex-col max-[767px]:!items-start max-[767px]:!gap-[32px] max-[767px]:!h-auto">
+                class="flex-1 w-full md:w-auto h-auto md:h-auto lg:h-[224px] p-6 md:p-8 lg:p-12 rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-8">
                 <img src="assets/images/microsoft_365_logo.png" alt="Microsoft"
-                    class="w-[32px] h-[35px] min-[768px]:max-[1279px]:!w-[28px] min-[768px]:max-[1279px]:!h-[30px] max-[767px]:!w-[32px] max-[767px]:!h-[35px] max-[767px]:!aspect-[32/35] object-contain">
+                    class="w-8 h-[35px] md:w-7 md:h-[30px] lg:w-8 lg:h-[35px] object-contain">
                 <h5
-                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[22px] lg:text-[26px] min-[1280px]:!text-[22px] min-[768px]:max-[1279px]:!text-[18px] max-[767px]:!text-[16px] max-[767px]:!font-medium max-[767px]:!leading-[26px] font-medium leading-[125%]">
-                    Microsoft 365
+                    class="text-ai-gray-1000 font-sans text-base md:text-lg lg:text-[22px] xl:text-[26px] font-medium leading-[125%]">
+                    {{ (cards[0]?.title | localizedText) || '' }}
                 </h5>
             </div>
             <div
-                class="flex-1 w-full md:w-auto h-auto lg:h-[224px] p-[40px] lg:p-[48px] min-[768px]:max-[1279px]:!p-[32px] min-[768px]:max-[1279px]:!h-auto min-[768px]:max-[1279px]:!gap-[24px] rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-[32px] max-[767px]:!flex max-[767px]:!p-[24px] max-[767px]:!flex-col max-[767px]:!items-start max-[767px]:!gap-[32px] max-[767px]:!h-auto">
+                class="flex-1 w-full md:w-auto h-auto md:h-auto lg:h-[224px] p-6 md:p-8 lg:p-12 rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-8">
                 <img src="assets/images/google_logo.png" alt="Google"
-                    class="w-[36px] h-[35px] min-[768px]:max-[1279px]:!w-[31px] min-[768px]:max-[1279px]:!h-[30px] max-[767px]:!w-[36px] max-[767px]:!h-[35px] max-[767px]:!aspect-[36/35] object-contain">
+                    class="w-9 h-[35px] md:w-8 md:h-[30px] lg:w-9 lg:h-[35px] object-contain">
                 <h5
-                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[22px] lg:text-[26px] min-[1280px]:!text-[22px] min-[768px]:max-[1279px]:!text-[18px] max-[767px]:!text-[16px] max-[767px]:!font-medium max-[767px]:!leading-[26px] font-medium leading-[125%]">
-                    Google Workspace
+                    class="text-ai-gray-1000 font-sans text-base md:text-lg lg:text-[22px] xl:text-[26px] font-medium leading-[125%]">
+                    {{ (cards[1]?.title | localizedText) || '' }}
                 </h5>
             </div>
             <div
-                class="flex-1 w-full md:w-auto h-auto lg:h-[224px] p-[40px] lg:p-[48px] min-[768px]:max-[1279px]:!p-[32px] min-[768px]:max-[1279px]:!h-auto min-[768px]:max-[1279px]:!gap-[24px] rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-[16px] lg:gap-[32px] max-[767px]:!flex max-[767px]:!p-[24px] max-[767px]:!flex-col max-[767px]:!items-start max-[767px]:!gap-[32px] max-[767px]:!h-auto">
+                class="flex-1 w-full md:w-auto h-auto md:h-auto lg:h-[224px] p-6 md:p-8 lg:p-12 rounded-[12px] bg-ai-gray-100 flex flex-col items-start gap-8">
                 <div class="flex items-center justify-between w-full">
                     <img src="assets/images/webex_logo.png" alt="Webex"
-                        class="w-[40px] h-[35px] min-[768px]:max-[1279px]:!w-[35px] min-[768px]:max-[1279px]:!h-[30px] max-[767px]:!w-[40px] max-[767px]:!h-[35px] max-[767px]:!aspect-[40/35] object-contain">
+                        class="w-10 h-[35px] md:w-9 md:h-[30px] lg:w-10 lg:h-[35px] object-contain">
                     <div
-                        class="flex items-center justify-center px-[16px] h-[35px] min-[768px]:max-[1279px]:!h-[30px] min-[768px]:max-[1279px]:!px-[12px] max-[767px]:!flex max-[767px]:!w-auto max-[767px]:!min-w-[65px] max-[767px]:!h-[35px] max-[767px]:!px-[14px] max-[767px]:!rounded-[27.059px] max-[767px]:!border-[1.353px] rounded-[27px] border-[1.35px] border-[#ED2915]">
+                        class="flex items-center justify-center px-3 md:px-3 lg:px-4 h-[30px] md:h-[30px] lg:h-[35px] rounded-full border border-brand-red">
                         <span
-                            class="text-[#ED2915] font-['Poppins',_sans-serif] text-[18px] min-[768px]:max-[1279px]:!text-[14px] max-[767px]:!text-[16px] max-[767px]:!leading-[100%] font-medium leading-[1]">Beta</span>
+                            class="text-brand-red font-sans text-base md:text-sm lg:text-lg font-medium leading-none">{{
+                            (cards[2]?.badge | localizedText) || '' }}</span>
                     </div>
                 </div>
                 <h5
-                    class="text-ai-gray-1000 font-['Poppins',_sans-serif] text-[22px] lg:text-[26px] min-[1280px]:!text-[22px] min-[768px]:max-[1279px]:!text-[18px] max-[767px]:!text-[16px] max-[767px]:!font-medium max-[767px]:!leading-[26px] font-medium leading-[125%]">
-                    Cisco Webex</h5>
+                    class="text-ai-gray-1000 font-sans text-base md:text-lg lg:text-[22px] xl:text-[26px] font-medium leading-[125%]">
+                    {{ (cards[2]?.title | localizedText) || '' }}</h5>
             </div>
         </div>
     </div>

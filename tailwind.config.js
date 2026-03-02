@@ -65,6 +65,11 @@ module.exports = {
                 cta: '#D32F2F',
                 'cta-hover': '#c92410',
 
+                // Brand tokens
+                'brand-red': '#ED2915',
+                'muted-gray': '#4D4D4D',
+                'brand-black': '#000000',
+
                 'text-primary': '#000000',
                 'text-body': '#303030',
                 'text-muted': '#4d4d4d',
@@ -79,12 +84,15 @@ module.exports = {
 
                 border: '#dadee4',
                 'border-light': '#f3f4f6',
+                'brand-red-tint': '#FDF2F1',
+                'text-body-color': '#303030',
             },
             maxWidth: {
                 'site': '1144px',
             },
             screens: {
                 'xs': '375px',
+                'nav': '1100px',
                 '3xl': '1920px',
             },
             keyframes: {

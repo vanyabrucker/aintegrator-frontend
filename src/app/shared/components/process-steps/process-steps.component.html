@@ -1,7 +1,9 @@
 <section class="w-full section-spacing">
     <div class="site-container flex flex-col items-center">
-        <h2 class="font-sans font-medium text-text-primary text-center text-[24px] mb-[32px] md:text-[36px] md:mb-[64px]">
-            Unser Ansatz
+        <h2 class="font-sans font-medium text-text-primary text-center
+                   text-[28px] mb-[60px]
+                   md:text-[56px] md:mb-[80px] md:font-medium">
+            {{ getTitle() }}
         </h2>
 
         <div
@@ -16,19 +18,22 @@
 
                     <div class="flex items-center justify-center rounded-full transition-colors duration-300 border border-transparent mx-auto
                                 w-[48px] h-[48px] min-w-[48px] min-h-[48px] mb-[18px]
-                                md:w-[56px] md:h-[56px] md:min-w-[56px] md:min-h-[56px] md:mb-[24px] bg-ai-gray-350 text-ai-gray-850">
+                                md:w-[56px] md:h-[56px] md:min-w-[56px] md:min-h-[56px] md:mb-[24px]"
+                        [ngClass]="step.active ? 'bg-brand-red text-white' : 'bg-ai-gray-350 text-ai-gray-850'">
                         <span class="font-sans font-medium leading-none text-[24px]">
                             {{ step.number }}
                         </span>
                     </div>
 
-                    <div class="font-sans text-base mb-1 md:mb-2 md:text-xl font-medium leading-[26px] text-ai-gray-1000 text-center mx-auto">
-                        {{ step.title }}
+                    <div class="font-sans font-medium text-ai-gray-1000 text-center
+                                text-[24px] mb-[15px]
+                                md:text-[32px] md:mb-[16px]">
+                        {{ getLocalizedText(step.title) }}
                     </div>
 
                     <p class="font-sans text-base md:text-xl font-normal leading-[26px] text-ai-gray-850 text-center mx-auto"
                         [class.max-w-[310px]]="i === 1">
-                        {{ step.desc }}
+                        {{ getStepDescription(step) }}
                     </p>
 
                 </div>

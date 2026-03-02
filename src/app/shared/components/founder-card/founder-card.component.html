@@ -10,14 +10,14 @@
             <h3 class="text-base md:text-xl xl:text-xl font-medium text-ai-gray-1000 m-0 font-['Poppins']">
                 {{ name }}
             </h3>
-            <p
-                class="text-base md:text-xl xl:text-xl text-[rgba(77,77,77,0.7)] leading-[26px] m-0 font-['Poppins']">
-                {{ role }}
+            <p class="text-base md:text-xl xl:text-xl text-[rgba(77,77,77,0.7)] leading-[26px] m-0 font-['Poppins']">
+                {{ role | localizedText }}
             </p>
         </div>
     </div>
 
-    <a [href]="linkedin" class="flex items-center text-[#D32F2F] text-base md:text-xl xl:text-xl font-medium no-underline w-fit arrow-link">
+    <a [href]="linkedin"
+        class="flex items-center text-cta text-base md:text-xl xl:text-xl font-medium no-underline w-fit arrow-link">
         LinkedIn
         <img src="assets/icons/Frame.svg" alt="LinkedIn" class="w-6 h-6 arrow-link-icon">
     </a>

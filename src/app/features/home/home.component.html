@@ -1,68 +1,84 @@
 <div class="w-full flex flex-col">
 
+  @if (homeData(); as data) {
+  <app-hero [title]="data.heroTitle | localizedText" [description]="data.heroDescription | localizedText"
+    [showButton]="data.heroShowButton ?? true" [buttonLabel]="data.heroButtonLabel | localizedText">
+  </app-hero>
+  } @else {
   <app-hero title="AI-Integration mit messbarer Wirkung"
     description="Wir unterstützen Unternehmen, Künstliche Intelligenz in ihre Prozesse zu integrieren – von der strategischen Beratung bis zu vollständigen AI-Lösungen."
     [showMobileHeroDots]="true" mobileMarginClass="mt-[125px] mb-[146px] xl:mt-[224px] xl:mb-0">
   </app-hero>
+  }
 
+  @if (homeData(); as data) {
+  <app-logo-carousel [partners]="data.partners || []"></app-logo-carousel>
+  } @else {
   <app-logo-carousel></app-logo-carousel>
+  }
 
-  <section class="w-full">
-    <div class="site-container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[24px]">
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Beratung
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            Strategische Beratung und Umsetzung von tailor-made AI-Lösungen
-          </p>
-        </div>
-
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Produkte
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            AI-Tools, entstanden aus der Praxis
-          </p>
-          <a [routerLink]="['/product']"
-            class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
-            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
-            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
-          </a>
-        </div>
-
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Education
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            AI-Weiterbildung für Führungskräfte
-          </p>
-          <a href="https://aintegrator.education" target="_blank" rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
-            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
-            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  @if (homeData()?.featuredCaseStudy) {
+  <app-case-study [caseStudy]="homeData()?.featuredCaseStudy!"></app-case-study>
+  } @else {
   <app-case-study></app-case-study>
+  }
 
-  <app-testimonial-section alignment="center"
-    quote="Endlich jemand, der nicht nur Technik verkauft, sondern unsere Arbeit ernst nimmt. AIntegrator hat uns zugehört und dann passende Lösungen entwickelt."
-    author="Dominique Bréa" role="CEO, Maffioli & Cie" avatarUrl="assets/images/dominique_brea_portrait.png"
+  @if (testimonials().length > 0) {
+  @for (testimonial of testimonials(); track testimonial._id; let first = $first) {
+  @if (first) {
+  <app-testimonial-section alignment="center" [quote]="testimonial.quote | localizedText"
+    [author]="testimonial.clientName" [role]="testimonial.clientRole | localizedText"
+    avatarUrl="assets/images/image 16.png" mobileMaxWidth="max-sm:max-w-[354px]" mobileGap="gap-[32px]"
+    mobileAuthorAlignment="items-start text-left">
+  </app-testimonial-section>
+  }
+  }
+  } @else {
+  <app-testimonial-section alignment="center" [quote]="homeData()?.fallbackTestimonialQuote | localizedText"
+    [author]="homeData()?.fallbackTestimonialAuthor || 'Danièle Bovier'"
+    [role]="homeData()?.fallbackTestimonialRole | localizedText" avatarUrl="assets/images/image 16.png"
     mobileMaxWidth="max-sm:max-w-[354px]" mobileGap="gap-[32px]" mobileAuthorAlignment="items-start text-left">
   </app-testimonial-section>
+  }
 
-  <app-cta-card></app-cta-card>
+  @if (homeData(); as data) {
+  <app-cta-card [title]="data.ctaCardTitle || ''" [description]="data.ctaCardDescription || ''"
+    [linkText]="data.ctaCardLinkText || ''" [linkUrl]="data.ctaCardLinkUrl || '/product'"
+    [currentLocale]="currentLocale()">
+  </app-cta-card>
+  } @else {
+  <app-cta-card [currentLocale]="currentLocale()"></app-cta-card>
+  }
 
-  <!-- <app-security-card></app-security-card> -->
+  @if (homeData(); as data) {
+  <app-process-steps [title]="data.processStepsTitle || ''" [steps]="data.processSteps || []"
+    [currentLocale]="currentLocale()">
+  </app-process-steps>
+  } @else {
+  <app-process-steps [currentLocale]="currentLocale()"></app-process-steps>
+  }
 
+  @if (homeData(); as data) {
+  <app-security-card [title]="data.securityCardTitle || ''" [description]="data.securityCardDescription || ''"
+    [currentLocale]="currentLocale()">
+  </app-security-card>
+  } @else {
+  <app-security-card [currentLocale]="currentLocale()"></app-security-card>
+  }
+
+  @if (homeData(); as data) {
+  <app-final-cta [title]="data.finalCtaTitle | localizedText" [description]="data.finalCtaDescription | localizedText"
+    [primaryBtnText]="data.finalCtaPrimaryBtnText | localizedText"
+    [primaryBtnLink]="data.finalCtaPrimaryBtnLink || '/contact'"
+    [secondaryBtnText]="data.finalCtaSecondaryBtnText | localizedText"
+    [secondaryBtnLink]="data.finalCtaSecondaryBtnLink || ''" [showMobileDecoration]="true"
+    [mobileDecorationClass]="'w-[195px] h-auto top-[300px] left-[-40px] md:w-[300px] md:top-[300px] md:left-[0px] lg:top-[300px] opacity-100'"
+    class="block section-spacing">
+  </app-final-cta>
+  } @else {
   <app-final-cta [showMobileDecoration]="true"
     [mobileDecorationClass]="'w-[195px] h-auto top-[300px] left-[-40px] md:w-[300px] md:top-[300px] md:left-[0px] lg:top-[300px] opacity-100'"
-    class="block section-spacing"></app-final-cta>
+    class="block section-spacing">
+  </app-final-cta>
+  }
 </div>

@@ -31,3 +31,7 @@
         transform: translate3d(-50%, 0, 0);
     }
 }
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}

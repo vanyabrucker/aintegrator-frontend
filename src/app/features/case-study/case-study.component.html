@@ -1,15 +1,16 @@
 <div class="w-full bg-white pt-[96px] md:pt-[148px] xl:pt-[196px] flex flex-col">
-    <div class="site-container flex flex-col gap-[48px] md:gap-[96px] lg:gap-[148px]">
+        <div class="site-container flex flex-col gap-[48px] md:gap-[96px] lg:gap-[148px]">
 
-        <app-case-study-hero></app-case-study-hero>
+                <app-case-study-hero [caseStudyData]="caseStudyData()"></app-case-study-hero>
 
-        <app-case-study-stats [stats]="lowerStats"></app-case-study-stats>
+                <app-case-study-stats [stats]="caseStudyUpperStats()"></app-case-study-stats>
 
-        <app-case-study-content></app-case-study-content>
+                <app-case-study-content [caseStudyData]="caseStudyData()"></app-case-study-content>
 
-    </div>
-    <div class="section-spacing"></div>
-    <app-final-cta [showDecoration]="false" class="block pt-0"></app-final-cta>
-    <div class="section-spacing"></div>
+                <app-case-study-stats [stats]="caseStudyLowerStats()" size="small"></app-case-study-stats>
+        </div>
+        <div class="section-spacing"></div>
+        <app-final-cta [showDecoration]="false" class="block pt-0"></app-final-cta>
+        <div class="section-spacing"></div>
 
 </div>

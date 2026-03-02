@@ -4,20 +4,23 @@
             class="inline-flex flex-col lg:flex-row justify-center lg:justify-start items-center h-auto md:h-auto lg:h-[413px] w-full md:w-full lg:w-full max-w-full lg:max-w-[1144px] bg-ai-gray-100 rounded-[12px] p-8 md:p-10 lg:py-16 lg:pl-16 lg:pr-[401px] lg:gap-0">
 
             <div class="flex flex-col items-start md:w-full lg:w-full">
+                <img src="assets/images/liasuite_logo.svg" alt="LiaSuite"
+                    class="h-10 w-auto object-contain mb-[32px] lg:mb-[52px]" />
                 <h2
                     class="text-primary text-2xl md:text-3xl xl:text-4xl font-medium leading-normal lg:leading-none font-sans mb-[24px] lg:mb-[24px]">
-                    AI-Tools, entstanden aus der Praxis
+                    {{ getTitle() }}
                 </h2>
 
                 <p
                     class="text-text-muted text-base md:text-xl font-normal leading-[26px] lg:leading-normal font-sans mb-[32px] lg:mb-[52px] w-full lg:w-[663px]">
-                    In unseren Projekten haben wir gelernt, was Unternehmen wirklich brauchen. Daraus ist die LiaSuite
-                    entstanden, AI-Tools, die Sie sofort einsetzen können.
+                    {{ getDescription() }}
+
                 </p>
 
-                <a href="/product" class="flex items-center no-underline cursor-pointer arrow-link">
-                    <span class="text-cta text-base md:text-xl font-medium font-sans">Mehr erfahren</span>
-                    <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+                <a [href]="linkUrl"
+                    class="flex items-center no-underline cursor-pointer transition-opacity duration-200 hover:opacity-80">
+                    <span class="text-cta text-[14px] font-medium font-sans">{{ getLinkText() }}</span>
+                    <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0" aria-hidden="true">
                 </a>
             </div>
 

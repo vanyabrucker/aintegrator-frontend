@@ -1,14 +1,30 @@
 <div class="site-container pt-[96px] pb-[96px] md:pt-[148px] md:pb-[148px] xl:pt-[196px] xl:pb-[196px]">
-    <div class="flex flex-col items-start gap-[48px] md:gap-[96px] w-full self-stretch">
+    <div class="flex flex-col items-start gap-12 md:gap-24 w-full self-stretch">
         <h1
             class="text-ai-gray-1000 font-['Poppins'] text-[32px] md:text-[48px] xl:text-[64px] font-medium text-center m-0 max-w-[1143px] mx-auto w-full">
-            Allgemeine Geschäftsbedingungen
+            {{ termsData()?.title ? (termsData()!.title | localizedText) : 'Allgemeine Geschäftsbedingungen' }}
         </h1>
 
-        <div class="flex flex-col items-start gap-[48px] xl:gap-[96px] w-full self-stretch">
-            <section class="flex flex-col items-start gap-[16px] md:gap-[24px] w-full self-stretch">
-                <h3
-                    class="text-black font-sans font-medium text-[24px] md:text-[28px] xl:text-[32px] leading-normal m-0">
+        <div class="flex flex-col items-start gap-6 md:gap-8 w-full self-stretch">
+            @if (termsData()?.content) {
+            <!-- Render rich text content from CMS -->
+            @for (block of getContentBlocks(); track block._key) {
+            @if (block.style === 'h2') {
+            <h3
+                class="text-brand-black font-sans font-medium text-2xl md:text-3xl xl:text-3xl leading-normal m-0 w-full mt-6 md:mt-8 xl:mt-12 first:mt-0">
+                {{ getBlockText(block) }}
+            </h3>
+            } @else if (block.style === 'normal') {
+            <p class="text-muted-gray font-sans font-normal text-base md:text-lg xl:text-2xl leading-6 m-0 w-full">
+                {{ getBlockText(block) }}
+            </p>
+            }
+            }
+            } @else {
+            <!-- Fallback to hardcoded content -->
+
+            <section class="flex flex-col items-start gap-4 md:gap-6 w-full self-stretch">
+                <h3 class="text-brand-black font-sans font-medium text-2xl md:text-3xl xl:text-3xl leading-normal m-0">
                     Anwendungsbereich
                 </h3>
                 <p
@@ -21,9 +37,8 @@
                 </p>
             </section>
 
-            <section class="flex flex-col items-start gap-[16px] md:gap-[24px] w-full self-stretch">
-                <h3
-                    class="text-black font-sans font-medium text-[24px] md:text-[28px] xl:text-[32px] leading-normal m-0">
+            <section class="flex flex-col items-start gap-4 md:gap-6 w-full self-stretch">
+                <h3 class="text-brand-black font-sans font-medium text-2xl md:text-3xl xl:text-3xl leading-normal m-0">
                     Angebot und Bestellung von Leistungen
                 </h3>
                 <p
@@ -134,6 +149,7 @@
                     Erstellt in Bern am 2. Januar 2024
                 </p>
             </section>
+            }
         </div>
     </div>
 </div>

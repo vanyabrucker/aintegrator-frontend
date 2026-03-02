@@ -1,13 +1,12 @@
 <div class="flex flex-col lg:flex-row justify-between items-start gap-[32px] lg:gap-[56px] section-spacing">
-    <div
-        class="flex flex-col items-start w-full max-w-full lg:max-w-[548px]">
+    <div class="flex flex-col items-start w-full max-w-full lg:max-w-[548px]">
         <div class="flex flex-col items-start w-full">
             <h3 class="text-black text-2xl md:text-3xl xl:text-4xl font-medium leading-normal m-0 w-full">
                 Email
             </h3>
-            <a href="mailto:support@aintegrator.ch"
-                class="mt-[16px] md:mt-[24px] w-auto md:w-[346px] text-black text-base md:text-xl leading-normal break-all">
-                support@aintegrator.ch
+            <a [href]="'mailto:' + (email | localizedText)"
+                class="mt-[16px] md:mt-[24px] w-auto md:w-[346px] text-black text-base md:text-xl font-medium leading-normal underline break-all">
+                {{ email | localizedText }}
             </a>
             <div class="w-full py-[24px] md:py-[48px]">
                 <div class="w-full h-px bg-ai-gray-650"></div>
@@ -18,9 +17,9 @@
             <h3 class="text-2xl md:text-3xl xl:text-4xl font-medium leading-normal m-0 w-full">
                 Notfall-Support
             </h3>
-            <a href="tel:+41783074040"
-                class="w-auto mt-[16px] md:mt-[24px] md:w-[346px] text-black text-base md:text-xl leading-normal break-all">
-                +41 78 307 40 40
+            <a [href]="'tel:' + (phone | localizedText)"
+                class="w-auto mt-[16px] md:mt-[24px] md:w-[346px] text-black text-base md:text-xl font-medium leading-normal underline break-all">
+                {{ phone | localizedText }}
             </a>
             <div class="w-full pt-[24px] md:pt-[48px]">
                 <div class="w-full h-px bg-ai-gray-650"></div>
@@ -35,14 +34,9 @@
                 Adresse
             </h3>
             <div class="flex flex-col w-auto">
-                <p class="text-ai-gray-850 text-base md:text-xl leading-normal m-0">
-                    AIntegrator GmbH</p>
-                <p class="text-ai-gray-850 text-base md:text-xl leading-normal m-0">
-                    Zeughausstrasse 31</p>
-                <p class="text-ai-gray-850 text-base md:text-xl leading-normal m-0">8004
-                    Zürich</p>
-                <p class="text-ai-gray-850 text-base md:text-xl leading-normal m-0">
-                    Schweiz</p>
+                <p class="text-ai-gray-850 text-base md:text-xl font-medium leading-normal m-0">
+                    {{ address | localizedText }}
+                </p>
             </div>
             <a href="https://share.google/FtmXtC4yWMcfRd4df" target="_blank" rel="noopener noreferrer"
                 class="flex items-center no-underline cursor-pointer text-cta text-base md:text-xl font-medium font-sans arrow-link">

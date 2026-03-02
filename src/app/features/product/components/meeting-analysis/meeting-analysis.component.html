@@ -1,12 +1,12 @@
 <section class="section-spacing w-full site-container">
     <div class="flex flex-col items-center gap-[24px] mb-[40px] xl:mb-[80px]">
-<div class="flex items-center gap-[8px] md:gap-[16px] xl:gap-[16px]">
+        <div class="flex items-center gap-[8px] md:gap-[16px] xl:gap-[16px]">
             <img src="assets/images/liatranscript_logo.svg" alt="LiaTranscript"
                 class="h-[21.62px] md:h-[43px] xl:h-[43px] w-auto object-contain flex-shrink-0">
         </div>
         <p
             class="text-ai-gray-850 text-center font-sans text-base md:text-xl font-normal leading-[148%] xl:max-w-[356px]">
-            Intelligente Meeting-Analyse
+            {{ subtitle | localizedText }}
         </p>
     </div>
 
@@ -15,7 +15,10 @@
         <div
             class="flex flex-col md:flex-row md:flex-nowrap justify-center gap-4 md:gap-6 lg:gap-8 items-center lg:items-stretch w-full md:h-[454px] xl:w-[984px] xl:h-[454px]">
             <span class="hidden lg:block">
-                <app-transcript-panel [transcriptData]="transcriptData"></app-transcript-panel>
+                <app-transcript-panel [transcriptData]="transcriptData" [uploadButtonLabel]="uploadButtonLabel"
+                    [recordButtonLabel]="recordButtonLabel" [summaryTabLabel]="summaryTabLabel"
+                    [transcriptTabLabel]="transcriptTabLabel"
+                    class="w-full xl:w-[380px] xl:flex-none h-auto xl:h-[454px] flex flex-col"></app-transcript-panel>
             </span>
 
             <div
@@ -29,7 +32,8 @@
                             <img [src]="monicaImage" alt="" class="w-full h-full object-cover object-center">
                         </div>
                         <span
-                            class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">Monica</span>
+                            class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">{{
+                            participants[0] || '' }}</span>
                     </div>
 
                     <div
@@ -40,17 +44,20 @@
                                 <img [src]="stephaneImage" alt="" class="w-full h-full object-cover object-center">
                             </div>
                             <span
-                                class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">Stephane</span>
+                                class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none">{{
+                                participants[1] || '' }}</span>
                         </div>
 
                         <div class="flex flex-col gap-[12px] xl:gap-[16px]">
                             <div
                                 class="w-full aspect-square rounded-[12px] border-2 border-ai-gray-200 bg-white flex flex-col items-center justify-center gap-[10px] p-[10px]">
-                                <div class="w-[48px] h-[48px] rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-[48px] h-[48px] rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                                     <img src="assets/icons/Union.png" alt="" class="w-[28px] h-[23px] object-contain">
                                 </div>
                                 <span
-                                    class="text-[#ED2915] font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none text-center">Lia</span>
+                                    class="text-ai-red-500 font-['Poppins'] xl:font-sans text-[16px] font-medium leading-none text-center">{{
+                                    participants[2] || '' }}</span>
                             </div>
                         </div>
                     </div>

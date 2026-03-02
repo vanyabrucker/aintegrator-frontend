@@ -3,18 +3,19 @@
 
         <div
             class="w-full xl:w-[567px] xl:h-[567px] bg-ai-gray-150 rounded-[24px] p-[32px] md:p-[60px] lg:p-[80px] flex items-center justify-center order-2 xl:order-1">
-            <div class="w-full max-w-[420px] mx-auto h-auto xl:h-full bg-white rounded-[12px] flex flex-col overflow-hidden">
+            <div
+                class="w-full max-w-[420px] mx-auto h-auto xl:h-full bg-white rounded-[12px] flex flex-col overflow-hidden">
                 <div class="pt-[29px] px-[24px] xl:px-[29px] mb-[36px] w-full flex items-center justify-between">
                     <img src="assets/icons/Union.png" alt="" class="w-[28px] h-[23px] object-contain flex-shrink-0">
                     <div class="flex items-center gap-[12px] xl:gap-[16px] flex-shrink-0">
                         <div class="flex items-center gap-[6px] xl:gap-[8px]">
                             <button
-                                class="flex items-center justify-center px-2 sm:px-3 py-1.5 !rounded-[6.242px] !border-[0.712px] !border-solid !border-ai-gray-500 text-ai-gray-1000 text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
-                                Datei hochladen
+                                class="flex items-center justify-center px-2 sm:px-3 py-1.5 rounded-[6px] border border-[0.712px] border-solid border-ai-gray-500 text-ai-gray-1000 text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
+                                {{ uploadButtonLabel | localizedText }}
                             </button>
                             <button
                                 class="flex items-center justify-center px-2 sm:px-3 py-1.5 rounded-[6px] border-none bg-ai-gray-975 text-white text-[10px] font-medium whitespace-nowrap cursor-default mobile-wrap-btn">
-                                Live Aufnehmen
+                                {{ recordButtonLabel | localizedText }}
                             </button>
                         </div>
                         <div
@@ -26,38 +27,41 @@
                 <div class="relative border-b-2 border-ai-gray-300 pb-[2px]">
                     <div class="flex gap-[41px] xl:gap-[53px] px-[25px] xl:px-[20px]">
                         <div class="relative">
-                            <span class="text-ai-gray-1000 font-sans text-[14px] font-medium">Zusammenfassung</span>
-                            <div class="absolute -bottom-[4px] left-1/2 -translate-x-1/2 w-[188px] h-[2px] bg-ai-gray-1000">
+                            <span class="text-ai-gray-1000 font-sans text-[14px] font-medium">{{
+                                summaryTabLabel | localizedText }}</span>
+                            <div
+                                class="absolute -bottom-[4px] left-1/2 -translate-x-1/2 w-[188px] h-[2px] bg-ai-gray-1000">
                             </div>
                         </div>
-                        <span class="text-ai-gray-850 font-sans text-[14px] font-normal">Transkript</span>
+                        <span class="text-ai-gray-850 font-sans text-[14px] font-normal">{{
+                            transcriptTabLabel | localizedText }}</span>
                     </div>
                 </div>
 
                 <div class="flex flex-col px-[24px] py-[24px] xl:pb-[35px] xl:pr-[29px] overflow-hidden xl:flex-1">
 
                     <h4 class="text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[14px] font-medium leading-normal">
-                        Executive Summary
+                        {{ summaryTitle | localizedText }}
                     </h4>
                     <p
                         class="mt-[12px] text-ai-gray-800 font-['Poppins'] xl:font-sans text-[12px] xl:text-[12px] font-normal leading-normal xl:max-w-[334px]">
-                        Das Projekt „Alpha" befindet sich in der finalen Testphase und liegt aktuell 85 % im Plan – mit
-                        geringen Verzögerungen bei der Integration der externen API.
+                        {{ summaryText | localizedText }}
                     </p>
 
                     <h4
                         class="mt-[24px] text-ai-gray-1000 font-['Poppins'] xl:font-sans text-[14px] font-medium leading-normal">
-                        Diskussionspunkte
+                        {{ discussionTitle | localizedText }}
                     </h4>
 
                     <div class="flex flex-col gap-[12px] mt-[12px] xl:max-w-[339px]">
                         @for (point of discussionPoints; track point.title) {
                         <div class="flex gap-[8px]">
-                            <div class="w-[3px] h-[3px] rounded-full bg-ai-gray-1000 flex-shrink-0 mt-[7px] ml-[4px]"></div>
+                            <div class="w-[3px] h-[3px] rounded-full bg-ai-gray-1000 flex-shrink-0 mt-[7px] ml-[4px]">
+                            </div>
                             <p
                                 class="font-['Poppins'] xl:font-sans text-[12px] xl:text-[12px] font-normal leading-normal">
-                                <span class="text-ai-gray-1000">{{ point.title }}</span>
-                                <span class="text-ai-gray-800"> {{ point.description }}</span>
+                                <span class="text-ai-gray-1000">{{ point.title | localizedText }}</span>
+                                <span class="text-ai-gray-800"> {{ point.description | localizedText }}</span>
                             </p>
                         </div>
                         }
@@ -70,14 +74,13 @@
         <div
             class="w-full max-w-[323px] md:max-w-[781px] xl:max-w-none xl:w-[445px] flex flex-col gap-[24px] items-center xl:items-start order-1 xl:order-2">
             <h2
-                class="text-ai-gray-1000 text-center xl:text-left font-['Poppins',_sans-serif] text-[24px] min-[768px]:text-[28px] min-[1024px]:text-[30px] xl:text-[32px] font-medium leading-normal">
-                Intelligente Zusammenfassungen
+                class="text-ai-gray-1000 text-center xl:text-left font-sans text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] font-medium leading-normal">
+                {{ title | localizedText }}
             </h2>
             <p
                 class="text-center xl:text-left font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-[148%]">
-                <span class="text-ai-gray-800">Erstellt präzise, strukturierte Zusammenfassungen aus Meetings. Verfügbar
-                    in </span><span class="text-[#ED2915]">Deutsch, Schweizerdeutsch, Englisch, Französisch und
-                    Italienisch</span>
+                <span class="text-ai-gray-800">{{ description | localizedText }} </span><span
+                    class="text-ai-gray-1000">{{ descriptionHighlight | localizedText }}</span>
             </p>
         </div>
 

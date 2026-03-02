@@ -1,41 +1,99 @@
 <section class="w-full section-spacing">
     <div class="site-container">
         <div class="w-full max-w-site mx-auto bg-bg-subtle rounded-xl p-8 md:p-12 xl:p-16">
-            <div class="w-full">
-                <div class="flex flex-col items-start text-left gap-[24px] min-w-0 xl:grid xl:grid-cols-[minmax(0,1fr)_540px] xl:gap-x-20">
-                    <div class="inline-flex items-center gap-2 xl:col-start-1">
-                        <lucide-icon [img]="landmarkIcon" [size]="14"
+            <div class="grid grid-cols-1 xl:grid-cols-[1fr_540px] gap-[24px] lg:gap-[64px] xl:gap-[98px] items-start">
+                <div
+                    class="flex flex-col items-start text-left xl:items-start xl:text-left gap-[24px] xl:gap-0 min-w-0">
+                    @if (caseStudy?.client) {
+                    <div
+                        class="inline-flex items-center h-[28px] px-[12px] py-[1px] gap-[4px] rounded-[8px] border border-ai-gray-450 xl:mb-[36px]">
+                        <lucide-icon [img]="landmarkIcon" [size]="10" [strokeWidth]="2.25"
                             class="text-ai-gray-850 flex-shrink-0"></lucide-icon>
-                        <span class="font-sans text-base font-medium leading-normal text-ai-gray-850">Financial Services
-                        </span>
+                        <span class="font-sans text-[12px] font-medium leading-normal text-ai-gray-850">{{
+                            caseStudy?.client }}</span>
                     </div>
+                    }
 
-                    <h2 class="font-sans text-2xl md:text-3xl xl:text-4xl font-medium text-primary leading-normal xl:col-start-1">
-                        Behördenanfragen auf Autopilot</h2>
+                    @if (caseStudy?.title) {
+                    <h2
+                        class="font-sans text-[24px] md:text-[32px] font-medium text-primary leading-normal xl:mb-[32px]">
+                        {{ caseStudy?.title | localizedText }}</h2>
+                    }
 
-                    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-[16px] xl:col-start-2 xl:row-start-1 xl:row-span-5 xl:self-start xl:gap-[24px]">
-                        @for (stat of homeStats; track stat.description) {
-                            <div
-                                class="flex flex-col justify-start gap-[8px] items-start bg-white rounded-[12px] p-[16px] sm:p-[20px] aspect-square xl:aspect-auto xl:h-[286px] xl:p-[36px]">
-                                <span class="font-medium font-sans text-base md:text-xl leading-normal">{{ stat.value }}</span>
-                                <p class="text-[rgba(77,77,77,0.7)] font-normal font-sans leading-normal m-0 text-base md:text-xl">
-                                    {{ stat.description }}
-                                </p>
-                            </div>
-                        }
-                    </div>
-
+                    @if (caseStudy?.excerpt) {
                     <p
-                        class="font-sans text-base md:text-xl leading-normal font-normal text-[#4d4d4db3] w-full xl:col-start-1">
-                        Für einen Finanzdienstleister haben wir die staatlichen Auskunftsersuchen digitalisiert.
+                        class="font-sans text-base md:text-xl leading-normal font-normal text-text-muted/70 w-full xl:max-w-[346px] xl:mb-[60px]">
+                        {{ caseStudy?.excerpt | localizedText }}
+                        <span class="text-primary font-normal text-[16px] leading-normal">
+                            die bestehenden Prozesse
+                            einer
+                            kantonalen Institution ein.</span>
                     </p>
+                    }
 
-                    <a [routerLink]="['/case-study', 'staatliche-agenten']"
-                        class="inline-flex items-center no-underline cursor-pointer arrow-link xl:col-start-1">
-                        <span class="font-sans text-base md:text-xl font-medium leading-normal text-cta">Fallstudie lesen</span>
-                        <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+                    @if (caseStudy?.slug) {
+
+                    <a [routerLink]="['/case-study', caseStudy?.slug?.current]"
+                        class="inline-flex items-center no-underline cursor-pointer arrow-link">
+                        <span class="font-sans text-base md:text-xl font-medium leading-normal text-cta">Fallstudie
+                            lesen</span>
+                        <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon"
+                            aria-hidden="true">
                     </a>
+                    }
                 </div>
+
+                @if (caseStudy?.results) {
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-[24px] w-full xl:w-[540px] xl:min-w-[540px]">
+                    @for (result of caseStudy?.results; track result._key) {
+                    @if ($first) {
+                    <div
+                        class="xl:col-span-2 bg-white rounded-[12px] flex flex-col justify-end items-start w-full h-[140px] md:h-auto p-[24px] xl:gap-0 xl:p-[36px] xl:h-[286px]">
+                        <span class="font-sans text-[32px] xl:text-[56px] font-medium text-primary leading-normal">{{
+                            result.value }}</span>
+                        <span
+                            class="font-sans text-[14px] xl:text-[16px] font-normal text-text-muted/70 leading-normal">{{
+                            result.label | localizedText }}</span>
+                    </div>
+                    } @else {
+                    <div
+                        class="bg-white rounded-[12px] flex flex-col justify-end items-start w-full h-[140px] md:h-auto p-[24px] xl:gap-0 xl:p-[36px] xl:h-[286px]">
+                        <span class="font-sans text-[32px] xl:text-[56px] font-medium text-primary leading-normal">{{
+                            result.value }}</span>
+                        <span
+                            class="font-sans text-[14px] xl:text-[16px] font-normal text-text-muted/70 leading-normal">{{
+                            result.label | localizedText }}</span>
+                    </div>
+                    }
+                    }
+                </div>
+                } @else {
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-[24px] w-full xl:w-[540px] xl:min-w-[540px]">
+                    <div
+                        class="col-span-2 bg-white rounded-[12px] flex flex-col justify-end items-start w-full h-[140px] p-6 md:p-8 xl:gap-0 xl:p-10 xl:h-[286px]">
+                        <span class="font-sans text-3xl xl:text-6xl font-medium text-primary leading-normal">70%</span>
+                        <span
+                            class="font-sans text-base md:text-xl font-normal text-text-muted/70 leading-normal">Prozessbeschleunigung</span>
+                    </div>
+
+                    <div
+                        class="bg-white rounded-[12px] flex flex-col justify-end items-start w-full h-[140px] p-6 md:p-8 xl:gap-0 xl:p-10 xl:h-[286px]">
+                        <span class="font-sans text-3xl xl:text-6xl font-medium text-primary leading-normal">45%</span>
+                        <span
+                            class="font-sans text-base md:text-xl font-normal text-text-muted/70 leading-normal">Kostenreduktion</span>
+                    </div>
+
+                    <div
+                        class="bg-white rounded-[12px] flex flex-col justify-end items-start w-full h-[140px] p-6 md:p-8 xl:gap-0 xl:p-10 xl:h-[286px]">
+                        <span
+                            class="font-sans text-3xl xl:text-6xl font-medium text-primary leading-normal flex items-baseline">3<span
+                                class="font-sans text-xl xl:text-4xl font-medium text-primary not-italic leading-normal ml-[2px]">X</span></span>
+                        <span
+                            class="font-sans text-base md:text-xl font-normal text-text-muted/70 leading-normal">Schnellere
+                            Umsetzung</span>
+                    </div>
+                </div>
+                }
             </div>
         </div>
     </div>

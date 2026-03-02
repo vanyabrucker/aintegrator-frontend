@@ -2,10 +2,28 @@
     <div class="flex flex-col items-start gap-[48px] md:gap-[96px] w-full self-stretch">
         <h1
             class="text-ai-gray-1000 font-['Poppins'] text-[32px] md:text-[48px] xl:text-[64px] font-medium text-center m-0 w-full max-w-[1143px] mx-auto">
-            Datenschutz
+            {{ privacyData()?.title ? (privacyData()!.title | localizedText) : 'Datenschutz' }}
         </h1>
 
-        <div class="flex flex-col items-start gap-[48px] xl:gap-[96px] w-full self-stretch">
+        <div class="flex flex-col items-start gap-[24px] md:gap-[32px] w-full self-stretch">
+            @if (privacyData()?.content) {
+            <!-- Render rich text content from CMS -->
+            @for (block of getContentBlocks(); track block._key) {
+            @if (block.style === 'h2') {
+            <h3
+                class="text-black font-sans font-medium text-[24px] md:text-[28px] xl:text-[32px] leading-normal m-0 w-full mt-[24px] md:mt-[32px] xl:mt-[48px] first:mt-0">
+                {{ getBlockText(block) }}
+            </h3>
+            } @else if (block.style === 'normal') {
+            <p
+                class="text-text-muted font-sans font-normal text-[16px] md:text-[20px] xl:text-[24px] leading-[1.5] m-0 w-full">
+                {{ getBlockText(block) }}
+            </p>
+            }
+            }
+            } @else {
+            <!-- Fallback to hardcoded content -->
+
             <section class="flex flex-col items-start gap-[16px] md:gap-[24px] w-full self-stretch">
                 <h3
                     class="text-black font-sans font-medium text-[24px] md:text-[28px] xl:text-[32px] leading-normal m-0">
@@ -375,6 +393,7 @@
                     Dokument nicht anders angegeben.
                 </p>
             </section>
+            }
         </div>
     </div>
 </div>

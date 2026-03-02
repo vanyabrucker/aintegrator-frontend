@@ -1,35 +1,65 @@
 <div class="about-us-page flex flex-col">
 
+    @if (aboutData(); as data) {
+    <app-about-hero [title]="data.heroTitle | localizedText" [description]="data.heroDescription || ''"
+        [currentLocale]="currentLocale()"></app-about-hero>
+    } @else {
     <app-about-hero></app-about-hero>
+    }
 
     <app-founders-grid-section [founders]="founders"></app-founders-grid-section>
 
-    <section class="site-container w-full max-w-[1144px] mx-auto mb-16 lg:mb-32 flex flex-col gap-[48px] md:gap-[96px]">
-        <section class="flex flex-col gap-[24px] items-start w-full lg:grid lg:grid-cols-[minmax(0,calc(50%-48px))_minmax(0,50%)] lg:gap-x-24 lg:gap-y-[24px]">
-            <h3 class="text-black font-medium text-[24px] md:text-[32px] font-sans leading-normal m-0 lg:col-start-1">
-                Mission
-            </h3>
-            <p class="text-text-secondary font-normal text-[16px] md:text-xl font-sans leading-normal m-0 lg:col-start-2">
-                Wir unterstützen etablierte Institutionen in den Bereichen Gesundheitswesen, Finanzen und Verwaltung dabei, die Komplexität von AI zu meistern. Unser Fokus liegt auf der pragmatischen Automatisierung von Geschäftsprozessen: Wir analysieren bestehende Abläufe und überführen sie in effiziente, automatisierte Systeme. So erzielen wir nachhaltige Kosteneinsparungen und eine messbare Steigerung der Qualität.
-            </p>
-        </section>
+    <app-principles-mv-section [isPrinciplesDesktop]="false">
+        <div mission>
+            @if (aboutData(); as data) {
+            <!-- <h3 class="text-2xl md:text-3xl font-bold mb-4">{{ data.missionTitle | localizedText }}</h3> -->
+            <p>{{ data.missionText | localizedText }}</p>
+            } @else {
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Our Mission</h3>
+            <p>Exceptional products are created through hard work – often on invisible, not very glamorous topics. We
+                act with clarity and urgency, focusing on what really matters. We stay grounded and do what works. Good
+                ideas count – regardless of where they come from.</p>
+            }
+        </div>
+        <div vision>
+            @if (aboutData(); as data) {
+            <!-- <h3 class="text-2xl md:text-3xl font-bold mb-4">{{ data.visionTitle | localizedText }}</h3> -->
+            <p>{{ data.visionText | localizedText }}</p>
+            } @else {
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Our Vision</h3>
+            <p>Our technology should make a real, positive difference in people's daily lives. Not through promises, but
+                through impact.</p>
+            }
+        </div>
+    </app-principles-mv-section>
 
-        <section class="flex flex-col gap-[24px] items-start w-full lg:grid lg:grid-cols-[minmax(0,calc(50%-48px))_minmax(0,50%)] lg:gap-x-24 lg:gap-y-[24px]">
-            <h3 class="text-black font-medium text-[24px] md:text-[32px] font-sans leading-normal m-0 lg:col-start-1">
-                Werte
-            </h3>
-            <p class="text-text-secondary font-normal text-[16px] md:text-xl font-sans leading-normal m-0 lg:col-start-2">
-                Wir verstehen Softwareentwicklung als Handwerk, in der Präzision und Detailreichtum die Basis für langlebige Lösungen bilden. Dabei agieren wir pragmatisch: Anstatt abstrakter Konzepte realisieren wir Automatisierungen, die dort ansetzen, wo sie unmittelbar Nutzen stiften. Wir entwickeln Systeme, die einfach funktionieren und von den Menschen, die sie nutzen, geliebt werden.
-            </p>
-        </section>
-    </section>
+    @if (homeData(); as home) {
+    <app-process-steps [title]="home.processStepsTitle || 'Our Approach'" [steps]="home.processSteps || []"
+        [currentLocale]="currentLocale()" class="block"></app-process-steps>
+    <app-security-card [title]="home.securityCardTitle || 'Hosted in Switzerland'"
+        [description]="home.securityCardDescription || ''" [currentLocale]="currentLocale()"
+        class="block"></app-security-card>
+    } @else {
+    <app-process-steps class="block"></app-process-steps>
+    <app-security-card class="block"></app-security-card>
+    }
 
-    <app-final-cta [title]="'Lassen Sie uns ins Gespräch kommen'"
-        [description]="'Investieren Sie 30 Minuten in die Zukunft Ihres Unternehmens: Wir zeigen Ihnen konkrete Erfolgsbeispiele und wie Ihre AI-Transformation reibungslos gelingt.'"
-        [secondaryBtnText]="'Karriere'" [secondaryBtnLink]="'/careers'"
-        [secondaryBtnIcon]="'assets/icons/Frame.png'" [primaryBtnText]="'Termin vereinbaren'"
+    @if (aboutData(); as data) {
+    <app-final-cta [title]="data.finalCtaTitle | localizedText" [description]="data.finalCtaDescription | localizedText"
+        [secondaryBtnText]="data.finalCtaSecondaryBtnText | localizedText"
+        [secondaryBtnLink]="data.finalCtaSecondaryBtnLink || '/careers'" [secondaryBtnIcon]="'assets/icons/Frame.png'"
+        [primaryBtnText]="data.finalCtaPrimaryBtnText | localizedText"
+        [primaryBtnLink]="data.finalCtaPrimaryBtnLink || '/contact'" [primaryBtnIcon]="'assets/icons/Frame.svg'"
+        [showDecoration]="false" class="block section-spacing">
+    </app-final-cta>
+    } @else {
+    <app-final-cta [title]="'Let\'s Start a Conversation'"
+        [description]="'Invest 30 minutes in your company\'s future. We\'ll show you concrete examples of success and how your AI transformation can proceed smoothly.'"
+        [secondaryBtnText]="'Explore Careers'" [secondaryBtnLink]="'/careers'"
+        [secondaryBtnIcon]="'assets/icons/Frame.png'" [primaryBtnText]="'Schedule Appointment'"
         [primaryBtnLink]="'/contact'" [primaryBtnIcon]="'assets/icons/Frame.svg'" [showDecoration]="false"
         class="block section-spacing">
     </app-final-cta>
+    }
 
 </div>
