@@ -10,7 +10,7 @@ import { LucideAngularModule, Phone, Video } from 'lucide-angular';
     styleUrl: './meeting-participants-mock.component.scss'
 })
 export class MeetingParticipantsMockComponent {
-    readonly monicaImage = 'assets/images/image 19.png';
+    readonly monicaImage = 'assets/images/monica_portrait.png';
     readonly stephaneImage = 'assets/images/portrait_stephane.png';
     readonly liaUnionLogo = 'assets/icons/Union.png';
     readonly videoIcon = Video;
