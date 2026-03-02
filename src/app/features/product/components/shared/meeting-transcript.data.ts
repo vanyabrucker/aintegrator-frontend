@@ -7,8 +7,8 @@ export interface MeetingTranscriptEntry {
 
 export const MEETING_TRANSCRIPT_DATA: MeetingTranscriptEntry[] = [
     {
-        initial: 'M',
-        name: 'Monica',
+        initial: 'L',
+        name: 'Laura',
         time: '00:01:00',
         text: 'Wo stehen wir gerade mit dem Projekt? Ich möchte den aktuellen Stand überprüfen und sehen, ob wir noch im Rahmen des geplanten Zeitplans liegen.'
     },

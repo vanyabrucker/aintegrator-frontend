@@ -11,7 +11,7 @@ import { LucideAngularModule, Phone, Video } from 'lucide-angular';
 })
 export class MeetingParticipantsMockComponent {
     readonly monicaImage = 'assets/images/image 19.png';
-    readonly stephaneImage = 'assets/images/image 20.png';
+    readonly stephaneImage = 'assets/images/portrait_stephane.png';
     readonly liaUnionLogo = 'assets/icons/Union.png';
     readonly videoIcon = Video;
     readonly phoneIcon = Phone;
