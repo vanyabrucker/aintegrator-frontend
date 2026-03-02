@@ -5,9 +5,8 @@ import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { LogoCarouselComponent } from './components/logo-carousel/logo-carousel.component';
 import { CaseStudyComponent } from './components/case-study/case-study.component';
 import { TestimonialSectionComponent } from '../../shared/components/testimonial-section/testimonial-section.component';
-import { CtaCardComponent } from './components/cta-card/cta-card.component';
-import { SecurityCardComponent } from '../../shared/components/security-card/security-card.component';
 import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.component';
+import { MeetingParticipantsMockComponent } from '../../shared/components/meeting-participants-mock/meeting-participants-mock.component';
 
 @Component({
     selector: 'app-home',
@@ -19,9 +18,7 @@ import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.c
         LogoCarouselComponent,
         CaseStudyComponent,
         TestimonialSectionComponent,
-
-        CtaCardComponent,
-        SecurityCardComponent,
+        MeetingParticipantsMockComponent,
         FinalCtaComponent
     ],
     templateUrl: './home.component.html',
