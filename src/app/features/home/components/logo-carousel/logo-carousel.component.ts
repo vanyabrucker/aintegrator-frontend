@@ -16,11 +16,8 @@ export class LogoCarouselComponent {
         { src: 'assets/images/image 12.png', alt: 'Partner 2' },
         { src: 'assets/images/image 13.png', alt: 'Partner 3' },
         { src: 'assets/images/image 14.png', alt: 'Partner 4' },
-        { src: 'assets/images/image 15.png', alt: 'Partner 5' },
-        { src: 'assets/images/image 11.png', alt: 'Partner 1' },
-        { src: 'assets/images/image 12.png', alt: 'Partner 2' },
-        { src: 'assets/images/image 13.png', alt: 'Partner 3' },
-        { src: 'assets/images/image 14.png', alt: 'Partner 4' },
-        { src: 'assets/images/image 15.png', alt: 'Partner 5' }
+        { src: 'assets/images/sawi_logo.png', alt: 'SAWI' },
+        { src: 'assets/images/credit_suisse_logo.png', alt: 'Credit Suisse' },
+        { src: 'assets/images/hesso_logo.png', alt: 'Hesso' }
     ];
 }

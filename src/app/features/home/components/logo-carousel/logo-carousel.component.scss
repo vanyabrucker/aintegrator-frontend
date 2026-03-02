@@ -26,31 +26,30 @@
     pointer-events: none;
 }
 
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
 .logo-img {
     opacity: 0.6;
     mix-blend-mode: luminosity;
     filter: grayscale(100%);
 }
 
-@media (max-width: 767px) {
+.logo-track {
+    animation: scroll-left 18s linear infinite;
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
     .logo-track {
-        gap: 48.51px;
-        padding-right: 48.51px;
-        animation: scroll-mobile 20s linear infinite;
+        animation-duration: 35s;
     }
+}
 
+@media (min-width: 1024px) {
+    .logo-track {
+        animation-duration: 25s;
+    }
+}
 
-
+@media (max-width: 767px) {
     .logo-img {
 
         &.logo-1 {
@@ -86,7 +85,7 @@
     }
 }
 
-@keyframes scroll-mobile {
+@keyframes scroll-left {
     0% {
         transform: translateX(0);
     }

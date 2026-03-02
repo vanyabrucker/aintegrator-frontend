@@ -1,18 +1,18 @@
 <section class="w-full flex justify-center relative">
     <div
-        class="flex flex-col items-center text-center relative w-full max-w-[323px] mx-auto md:max-w-[600px] md:px-12 xl:w-[828px] xl:max-w-none xl:px-0 gap-0 md:gap-[32px] xl:gap-[24px]">
+        class="flex flex-col items-center text-center relative w-full mx-auto md:px-12 xl:px-0 gap-0 md:gap-[32px] xl:gap-[24px]">
 
-        <h2 class="text-primary font-sans font-medium text-[24px] md:text-[32px] max-w-[65ch]] mx-auto leading-normal text-center"
-            [ngClass]="titleDescriptionGapClass">
+        <h2
+            class="text-primary max-w-[25ch] font-sans font-medium text-[24px] md:text-[32px] mx-auto leading-normal text-center mb-[24px] md:mb-0">
             {{ title }}
         </h2>
 
-        <p class="w-full mx-auto text-text-muted font-sans leading-normal text-base md:text-xl font-normal text-center xl:mb-[8px]"
-            [ngClass]="[descriptionMaxWidthClass, descriptionButtonsGapClass]">
+        <p
+            class="w-full mx-auto text-text-muted max-w-[55ch] font-sans leading-normal text-base md:text-xl font-normal text-center xl:mb-[8px] mb-[33px] md:mb-0">
             {{ description }}
         </p>
 
-        <div class="flex justify-center items-center relative" [ngClass]="[buttonContainerClass, buttonsGapClass]">
+        <div class="flex justify-center items-center relative gap-[26px] md:gap-[24px]" [ngClass]="buttonContainerClass">
             <a *ngIf="secondaryBtnText && !secondaryBtnLink.startsWith('http')" [routerLink]="secondaryBtnLink"
                 class="flex items-center text-ai-gray-1000 no-underline font-medium font-sans text-base md:text-xl leading-normal arrow-link">
                 <span>{{ secondaryBtnText }}</span>
