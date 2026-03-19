@@ -218,13 +218,10 @@ export interface ContactPage {
   metaTitle?: LocalizedText;
   metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
-  heroDescription?: LocalizedText;
   officeTitle?: LocalizedText;
   officeAddress?: LocalizedText;
   email?: string;
   phone?: string;
-  formTitle?: LocalizedText;
-  formDescription?: LocalizedText;
 }
 
 // Site Settings

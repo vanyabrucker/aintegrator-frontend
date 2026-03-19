@@ -48,7 +48,7 @@ export class ContactComponent implements OnInit {
         if (!data) return;
         const locale = this.localeService.currentLocale();
         const title = getLocalized((data.metaTitle ?? data.heroTitle) as Record<string, string> | undefined, locale, ['en', 'de']);
-        const description = getLocalized((data.metaDescription ?? data.heroDescription) as Record<string, string> | undefined, locale, ['en', 'de']);
+        const description = getLocalized(data.metaDescription as Record<string, string> | undefined, locale, ['en', 'de']);
         if (title) this.pageMeta.setPageMeta(title, description ?? undefined);
     }
 }
