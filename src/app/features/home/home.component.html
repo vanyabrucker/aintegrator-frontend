@@ -1,91 +1,78 @@
 <div class="w-full flex flex-col">
 
-  <app-hero title="AI-Integration mit messbarer Wirkung"
-    description="Wir unterstützen Unternehmen, Künstliche Intelligenz in ihre Prozesse zu integrieren – von der strategischen Beratung bis zu vollständigen AI-Lösungen."
-    mobileMarginClass="mt-[125px] mb-[48px] xl:mt-[224px] lg:mb-[64px]"
-    buttonLabel="Termin vereinbaren" buttonLink="https://calendar.app.google/fzUMskhjkfUh2Qd47"
-  >
-  </app-hero>
+  @if (homeData(); as data) {
+    @if (data.heroTitle || data.heroDescription) {
+      <app-hero
+        [title]="data.heroTitle | localizedText"
+        [description]="data.heroDescription | localizedText"
+        [showButton]="data.heroShowButton !== false"
+        [buttonLabel]="data.heroButtonLabel | localizedText"
+        [buttonLink]="data.heroButtonLink || ''"
+        mobileMarginClass="mt-[125px] mb-[48px] xl:mt-[224px] lg:mb-[64px]">
+      </app-hero>
+    }
+  }
 
-  <app-logo-carousel></app-logo-carousel>
+  <app-logo-carousel [logos]="partnerLogos()"></app-logo-carousel>
 
-  <section class="w-full">
-    <div class="site-container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[24px]">
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Beratung
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            Strategische Beratung und Umsetzung von tailor-made AI-Lösungen
-          </p>
-        </div>
-
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Produkte
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            AI-Tools, entstanden aus der Praxis
-          </p>
-          <a [routerLink]="['/product']" class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
-            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
-            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
-          </a>
-        </div>
-
-        <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
-          <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
-            Education
-          </h3>
-          <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
-            AI-Weiterbildung für Führungskräfte
-          </p>
-          <a href="https://aintegrator.education" target="_blank" rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
-            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Mehr erfahren</span>
-            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
-          </a>
+  @if (homeData()?.serviceCards && homeData()!.serviceCards!.length > 0) {
+    <section class="w-full">
+      <div class="site-container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
+          @for (card of homeData()!.serviceCards; track $index) {
+            <div class="aspect-square rounded-[12px] bg-ai-gray-100 p-6 md:p-8 flex flex-col gap-[12px]">
+              <h3 class="text-ai-gray-1000 font-sans text-[24px] md:text-[32px] font-medium leading-normal m-0">
+                {{ card.title | localizedText }}
+              </h3>
+              <p class="text-ai-gray-850 font-sans text-base md:text-xl font-normal leading-normal m-0">
+                {{ card.description | localizedText }}
+              </p>
+              @if (card.link && (card.linkText | localizedText)) {
+                @if (card.link.startsWith('http')) {
+                  <a [href]="card.link" target="_blank" rel="noopener noreferrer"
+                    class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
+                    <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">{{ card.linkText | localizedText }}</span>
+                    <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+                  </a>
+                } @else {
+                  <a [routerLink]="card.link"
+                    class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
+                    <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">{{ card.linkText | localizedText }}</span>
+                    <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
+                  </a>
+                }
+              }
+            </div>
+          }
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  }
 
-  <app-case-study></app-case-study>
+  <app-case-study [featuredCaseStudy]="homeData()?.featuredCaseStudy ?? null"
+    [caseStudyLinkText]="homeData()?.caseStudyLinkText ?? null"></app-case-study>
 
-  <app-testimonial-section alignment="center" variant="compactNarrow"
-    quote="Endlich jemand, der nicht nur Technik verkauft, sondern unsere Arbeit ernst nimmt. AIntegrator hat uns zugehört und dann passende Lösungen entwickelt."
-    author="Dominique Bréa" role="CEO, Maffioli & Cie" avatarUrl="assets/images/dominique_brea_portrait.png">
-  </app-testimonial-section>
+  @if (homeData(); as data) {
+    @if (data.testimonials && data.testimonials.length > 0) {
+      <app-testimonial-section alignment="center" variant="compactNarrow"
+        [quote]="(data.testimonials[0].quote | localizedText) || ''"
+        [author]="data.testimonials[0].clientName || ''"
+        [role]="(data.testimonials[0].clientRole | localizedText) || ''"
+        [avatarUrl]="data.testimonials[0].photo ? getTestimonialPhotoUrl(data.testimonials[0].photo) : ''">
+      </app-testimonial-section>
+    }
+  }
 
-  <section class="w-full section-spacing">
-    <div class="site-container">
-      <div
-        class="w-full bg-ai-gray-200 rounded-[24px] overflow-hidden p-6 md:p-12 xl:px-[80px] xl:py-[80px] flex flex-col items-center gap-4 md:gap-6 lg:gap-8 xl:flex-row xl:justify-center">
-        <div
-          class="flex flex-col md:flex-row md:flex-nowrap justify-center gap-4 md:gap-6 lg:gap-16 items-center w-full md:h-[454px] xl:w-[984px] xl:h-[454px]">
-        <div
-          class="w-full flex flex-col gap-[24px] items-start order-1 xl:order-1">
-          <h2
-            class="text-ai-gray-1000 text-left font-['Poppins',_sans-serif] text-2xl md:text-3xl xl:text-4xl font-medium leading-normal">
-            LiaSuite – AI aus der Praxis
-          </h2>
-          <p class="text-left font-['Poppins',_sans-serif] text-base md:text-xl font-normal leading-[148%]">
-            <span class="text-ai-gray-800">Entstanden aus unseren Beratungsprojekten. Praxisgeprüfte AI-Tools, sofort einsatzbereit.</span>
-          </p>
-          <a [routerLink]="['/product']" class="mt-auto inline-flex items-center no-underline cursor-pointer arrow-link">
-            <span class="text-cta font-sans text-base md:text-xl font-medium leading-normal">Produkte</span>
-            <img src="assets/icons/Frame.svg" alt="" class="flex-shrink-0 arrow-link-icon" aria-hidden="true">
-          </a>
-        </div>
-
-          <app-meeting-participants-mock></app-meeting-participants-mock>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- <app-security-card></app-security-card> -->
-
-  <app-final-cta class="block section-spacing"></app-final-cta>
+  @if (homeData(); as data) {
+    @if (data.finalCtaTitle || data.finalCtaDescription) {
+      <app-final-cta class="block section-spacing"
+        [title]="data.finalCtaTitle | localizedText"
+        [description]="data.finalCtaDescription | localizedText"
+        [primaryBtnText]="data.finalCtaPrimaryBtnText | localizedText"
+        [primaryBtnLink]="data.finalCtaPrimaryBtnLink || ''"
+        [secondaryBtnText]="data.finalCtaSecondaryBtnText | localizedText"
+        [secondaryBtnLink]="data.finalCtaSecondaryBtnLink || ''">
+      </app-final-cta>
+    }
+  }
 </div>

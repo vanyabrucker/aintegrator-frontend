@@ -10,12 +10,14 @@
                 {{ description }}
             </p>
 
-            <a [href]="buttonLink" [attr.target]="buttonLink.startsWith('http') ? '_blank' : null"
-                [attr.rel]="buttonLink.startsWith('http') ? 'noopener noreferrer' : null"
-                class="mt-[32px] flex items-center border-none bg-transparent p-0 text-cta font-sans font-medium text-base md:text-xl leading-normal no-underline cursor-pointer arrow-link">
-                <span>{{ buttonLabel }}</span>
-                <img src="assets/icons/Frame.svg" alt="" class="block arrow-link-icon">
-            </a>
+            @if (showButton && buttonLabel) {
+                <a [href]="buttonLink" [attr.target]="buttonLink.startsWith('http') ? '_blank' : null"
+                    [attr.rel]="buttonLink.startsWith('http') ? 'noopener noreferrer' : null"
+                    class="mt-[32px] flex items-center border-none bg-transparent p-0 text-cta font-sans font-medium text-base md:text-xl leading-normal no-underline cursor-pointer arrow-link">
+                    <span>{{ buttonLabel }}</span>
+                    <img src="assets/icons/Frame.svg" alt="" class="block arrow-link-icon">
+                </a>
+            }
         </div>
     </div>
 </section>

@@ -74,8 +74,17 @@ export const SanityQueries = {
         partners[]-> {
             _id,
             name,
-            logo,
+            logo {
+                ...,
+                asset->
+            },
             website
+        },
+        serviceCards[] {
+            title,
+            description,
+            link,
+            linkText
         },
         featuredCaseStudy-> {
             _id,
@@ -83,8 +92,19 @@ export const SanityQueries = {
             title,
             slug,
             client,
+            industry,
             excerpt,
             results[]
+        },
+        testimonials[]-> {
+            _id,
+            clientName,
+            clientRole,
+            quote,
+            photo {
+                ...,
+                asset->
+            }
         }
     }`,
     ABOUT_PAGE: `*[_type == "aboutPage"][0]`,

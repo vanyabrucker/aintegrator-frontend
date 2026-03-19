@@ -7,6 +7,7 @@ import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.c
 import { RouterModule } from '@angular/router';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
+import { SiteSettingsService } from '../../core/services/site-settings.service';
 import { CaseStudy } from '../../shared/models/sanity.models';
 import { SanityQueries, getLocalizedValue } from '../../core/services/sanity.helpers';
 
@@ -37,9 +38,14 @@ export class CaseStudyComponent implements OnInit {
 
     constructor(
         private sanityService: SanityService,
-        private localeService: LocaleService
+        private localeService: LocaleService,
+        private siteSettings: SiteSettingsService
     ) {
         this.currentLocale.set(this.localeService.currentLocale());
+    }
+
+    get finalCta() {
+        return this.siteSettings.getFinalCTAForLang(this.localeService.currentLocale());
     }
 
     async ngOnInit() {

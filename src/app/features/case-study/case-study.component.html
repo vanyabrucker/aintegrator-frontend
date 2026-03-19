@@ -11,7 +11,14 @@
 
     </div>
     <div class="section-spacing"></div>
-    <app-final-cta class="block pt-0"></app-final-cta>
+    @if (finalCta; as cta) {
+      <app-final-cta class="block pt-0"
+        [title]="cta.title || ''"
+        [description]="cta.description || ''"
+        [primaryBtnText]="cta.primaryBtnText || ''"
+        [primaryBtnLink]="cta.primaryBtnLink || ''">
+      </app-final-cta>
+    }
     <div class="section-spacing"></div>
 
 </div>

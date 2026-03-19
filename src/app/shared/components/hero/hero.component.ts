@@ -13,6 +13,7 @@ export class HeroComponent {
     @Input() title: string = '';
     @Input() description: string = '';
     @Input() backgroundImage: string = 'assets/images/Group 3007.png';
+    @Input() showButton = true;
     @Input() buttonLabel: string = '';
     @Input() buttonLink: string = '/contact';
     @Input() titleMaxWidthClass: string = 'md:max-w-[635px]';

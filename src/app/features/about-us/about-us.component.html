@@ -28,7 +28,7 @@
           @if (data.valuesText) {
             <section class="flex flex-col gap-[24px] items-start w-full lg:grid lg:grid-cols-[minmax(0,calc(50%-48px))_minmax(0,50%)] lg:gap-x-24 lg:gap-y-[24px]">
                 <h3 class="text-black font-medium text-[24px] md:text-[32px] font-sans leading-normal m-0 lg:col-start-1">
-                    {{ (data.valuesTitle | localizedText) || 'Werte' }}
+                    {{ data.valuesTitle | localizedText }}
                 </h3>
                 <p class="text-text-secondary font-normal text-[16px] md:text-xl font-sans leading-normal m-0 lg:col-start-2">
                     {{ data.valuesText | localizedText }}

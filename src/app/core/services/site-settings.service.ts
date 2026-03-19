@@ -7,6 +7,7 @@ export interface FinalCTASettings {
     title: Record<string, string>;
     description: Record<string, string>;
     primaryBtnText: Record<string, string>;
+    primaryBtnLink?: string;
 }
 
 export interface SiteSettings {
@@ -33,6 +34,7 @@ export class SiteSettingsService {
             title: getLocalized(cta.title, lang, fallbacks),
             description: getLocalized(cta.description, lang, fallbacks),
             primaryBtnText: getLocalized(cta.primaryBtnText, lang, fallbacks),
+            primaryBtnLink: cta.primaryBtnLink,
         };
     }
 

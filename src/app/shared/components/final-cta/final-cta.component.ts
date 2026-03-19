@@ -10,11 +10,11 @@ import { RouterModule } from '@angular/router';
     styleUrl: './final-cta.component.scss'
 })
 export class FinalCtaComponent {
-    @Input() title: string = 'Zeit für AI-Integration mit messbarer Wirkung';
-    @Input() description: string = 'Investieren Sie 30 Minuten in die Zukunft Ihres Unternehmens: Wir zeigen Ihnen konkrete Erfolgsbeispiele und wie Ihre AI-Transformation reibungslos gelingt.';
+    @Input() title = '';
+    @Input() description = '';
 
-    @Input() primaryBtnText: string = 'Termin vereinbaren';
-    @Input() primaryBtnLink: string = 'https://calendar.app.google/fzUMskhjkfUh2Qd47';
+    @Input() primaryBtnText = '';
+    @Input() primaryBtnLink = '';
     @Input() primaryBtnIcon: string = 'assets/icons/Frame.svg';
     @Input() mobilePrimaryBtnText: string = '';
 

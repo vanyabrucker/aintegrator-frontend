@@ -224,7 +224,6 @@ export interface CaseStudy {
     title?: LocalizedText;
     description?: LocalizedText;
   }>;
-  content?: LocalizedRichText;
   publishedAt?: string;
   featured?: boolean;
 }
@@ -238,9 +237,16 @@ export interface Testimonial {
   company?: string;
   quote: LocalizedText;
   photo?: SanityImage;
-  rating?: number;
   featured?: boolean;
   order?: number;
+}
+
+// Home Page Service Card
+export interface HomeServiceCard {
+  title?: LocalizedText;
+  description?: LocalizedText;
+  link?: string;
+  linkText?: LocalizedText;
 }
 
 // Home Page
@@ -251,25 +257,12 @@ export interface HomePage {
   heroDescription?: LocalizedText;
   heroShowButton?: boolean;
   heroButtonLabel?: LocalizedText;
-  ctaCardTitle?: LocalizedText;
-  ctaCardDescription?: LocalizedText;
-  ctaCardLinkText?: LocalizedText;
-  ctaCardLinkUrl?: string;
+  heroButtonLink?: string;
   partners?: Partner[];
+  serviceCards?: HomeServiceCard[];
   testimonials?: Testimonial[];
   featuredCaseStudy?: CaseStudy;
-  fallbackTestimonialQuote?: LocalizedText;
-  fallbackTestimonialAuthor?: string;
-  fallbackTestimonialRole?: LocalizedText;
-  processStepsTitle?: LocalizedText;
-  processSteps?: Array<{
-    number: string;
-    title: LocalizedText;
-    description: LocalizedText;
-    active?: boolean;
-  }>;
-  securityCardTitle?: LocalizedText;
-  securityCardDescription?: LocalizedText;
+  caseStudyLinkText?: LocalizedText;
   finalCtaTitle?: LocalizedText;
   finalCtaDescription?: LocalizedText;
   finalCtaPrimaryBtnText?: LocalizedText;
