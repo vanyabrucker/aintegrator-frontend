@@ -57,6 +57,11 @@ export class LegalPageService {
         return getLocalized(page.title as Record<string, string>, lang, ['de', 'en']) ?? '';
     }
 
+    getMetaDescription(page: LegalPage | null, lang: string): string | undefined {
+        if (!page?.metaDescription) return undefined;
+        return getLocalized(page.metaDescription as Record<string, string>, lang, ['de', 'en']) ?? undefined;
+    }
+
     getContentHtml(page: LegalPage | null, lang: string): string {
         if (!page?.content) return '';
         const content = page.content as Record<string, unknown[]>;

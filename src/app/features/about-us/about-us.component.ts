@@ -4,7 +4,9 @@ import { AboutHeroComponent } from './components/about-hero/about-hero.component
 import { FoundersGridSectionComponent } from './components/founders-grid-section/founders-grid-section.component';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
+import { PageMetaService } from '../../core/services/page-meta.service';
 import { AboutPage, HomePage, TeamMember } from '../../shared/models/sanity.models';
+import { getLocalized } from '../../core/utils/localization';
 import { SanityQueries } from '../../core/services/sanity.helpers';
 import { LocalizedTextPipe } from '../../shared/pipes/localized-text.pipe';
 
@@ -30,13 +32,15 @@ export class AboutUsComponent implements OnInit {
 
     constructor(
         private sanityService: SanityService,
-        private localeService: LocaleService
+        private localeService: LocaleService,
+        private pageMeta: PageMetaService
     ) {
         this.currentLocale.set(this.localeService.currentLocale());
 
         // Watch for locale changes and update signal
         effect(() => {
             this.currentLocale.set(this.localeService.currentLocale());
+            this.updatePageMeta(this.aboutData());
         });
     }
 
@@ -63,5 +67,11 @@ export class AboutUsComponent implements OnInit {
         }
     }
 
-
+    private updatePageMeta(data: AboutPage | null) {
+        if (!data) return;
+        const locale = this.currentLocale();
+        const title = getLocalized((data.metaTitle ?? data.heroTitle) as Record<string, string> | undefined, locale, ['en', 'de']);
+        const description = getLocalized((data.metaDescription ?? data.heroDescription) as Record<string, string> | undefined, locale, ['en', 'de']);
+        if (title) this.pageMeta.setPageMeta(title, description ?? undefined);
+    }
 }

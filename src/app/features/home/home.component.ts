@@ -9,7 +9,9 @@ import { FinalCtaComponent } from '../../shared/components/final-cta/final-cta.c
 import { LocalizedTextPipe } from '../../shared/pipes/localized-text.pipe';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
+import { PageMetaService } from '../../core/services/page-meta.service';
 import { HomePage, Partner } from '../../shared/models/sanity.models';
+import { getLocalized } from '../../core/utils/localization';
 import { SanityQueries } from '../../core/services/sanity.helpers';
 import { getImageUrl } from '../../core/services/sanity.helpers';
 
@@ -37,11 +39,13 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private sanityService: SanityService,
-        private localeService: LocaleService
+        private localeService: LocaleService,
+        private pageMeta: PageMetaService
     ) {
         this.currentLocale.set(this.localeService.currentLocale());
         effect(() => {
             this.currentLocale.set(this.localeService.currentLocale());
+            this.updatePageMeta(this.homeData());
         });
     }
 
@@ -57,6 +61,14 @@ export class HomeComponent implements OnInit {
         } catch (error) {
             console.error('Error loading home page:', error);
         }
+    }
+
+    private updatePageMeta(data: HomePage | null) {
+        if (!data) return;
+        const locale = this.currentLocale();
+        const title = getLocalized((data.metaTitle ?? data.heroTitle) as Record<string, string> | undefined, locale, ['en', 'de']);
+        const description = getLocalized((data.metaDescription ?? data.heroDescription) as Record<string, string> | undefined, locale, ['en', 'de']);
+        if (title) this.pageMeta.setPageMeta(title, description ?? undefined);
     }
 
     private resolvePartnerLogos(partners: Partner[]): { src: string; alt: string }[] {

@@ -49,6 +49,8 @@ export interface Partner {
 export interface CaseStudy {
   _id: string;
   _type: 'caseStudy';
+  metaTitle?: LocalizedText;
+  metaDescription?: LocalizedText;
   title: LocalizedText;
   slug?: {
     current?: string;
@@ -128,6 +130,8 @@ export interface HomeServiceCard {
 export interface HomePage {
   _id: string;
   _type: 'homePage';
+  metaTitle?: LocalizedText;
+  metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
   heroDescription?: LocalizedText;
   heroShowButton?: boolean;
@@ -150,6 +154,8 @@ export interface HomePage {
 export interface AboutPage {
   _id: string;
   _type: 'aboutPage';
+  metaTitle?: LocalizedText;
+  metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
   heroDescription?: LocalizedText;
   heroShowButton?: boolean;
@@ -171,6 +177,8 @@ export interface AboutPage {
 export interface CareersPage {
   _id: string;
   _type: 'careersPage';
+  metaTitle?: LocalizedText;
+  metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
   departmentFilterLabel?: LocalizedText;
   locationFilterLabel?: LocalizedText;
@@ -207,6 +215,8 @@ export interface Career {
 export interface ContactPage {
   _id: string;
   _type: 'contactPage';
+  metaTitle?: LocalizedText;
+  metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
   heroDescription?: LocalizedText;
   officeTitle?: LocalizedText;
@@ -247,6 +257,7 @@ export interface LegalPage {
   _type: 'legalPage';
   pageType: 'privacy' | 'terms';
   title: LocalizedText;
+  metaDescription?: LocalizedText;
   lastUpdated: string;
   content: LocalizedRichText;
 }

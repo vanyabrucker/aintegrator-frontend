@@ -1,4 +1,4 @@
-import { Component, computed, input, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, input, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CaseStudyHeroComponent } from './components/case-study-hero/case-study-hero.component';
 import { CaseStudyContentComponent } from './components/case-study-content/case-study-content.component';
@@ -8,7 +8,9 @@ import { RouterModule } from '@angular/router';
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
 import { SiteSettingsService } from '../../core/services/site-settings.service';
+import { PageMetaService } from '../../core/services/page-meta.service';
 import { CaseStudy } from '../../shared/models/sanity.models';
+import { getLocalized } from '../../core/utils/localization';
 import { SanityQueries, getLocalizedValue } from '../../core/services/sanity.helpers';
 
 @Component({
@@ -39,9 +41,14 @@ export class CaseStudyComponent implements OnInit {
     constructor(
         private sanityService: SanityService,
         private localeService: LocaleService,
-        private siteSettings: SiteSettingsService
+        private siteSettings: SiteSettingsService,
+        private pageMeta: PageMetaService
     ) {
         this.currentLocale.set(this.localeService.currentLocale());
+        effect(() => {
+            this.currentLocale.set(this.localeService.currentLocale());
+            this.updatePageMeta(this.caseStudyData());
+        });
     }
 
     get finalCta() {
@@ -68,5 +75,13 @@ export class CaseStudyComponent implements OnInit {
 
     getLocalizedText(localizedText: any): string {
         return getLocalizedValue(localizedText, this.currentLocale(), 'de') || '';
+    }
+
+    private updatePageMeta(data: CaseStudy | undefined) {
+        if (!data) return;
+        const locale = this.currentLocale();
+        const title = getLocalized((data.metaTitle ?? data.title) as Record<string, string> | undefined, locale, ['en', 'de']);
+        const description = getLocalized((data.metaDescription ?? data.excerpt) as Record<string, string> | undefined, locale, ['en', 'de']);
+        if (title) this.pageMeta.setPageMeta(title, description ?? undefined);
     }
 }
