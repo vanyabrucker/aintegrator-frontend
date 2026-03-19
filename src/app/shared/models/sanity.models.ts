@@ -63,8 +63,6 @@ export interface CaseStudy {
   coverImage?: SanityImage;
   client?: string;
   industry?: LocalizedText;
-  challenge?: LocalizedText;
-  solution?: LocalizedText;
   results?: Array<{
     _key: string;
     value: string;
@@ -157,20 +155,10 @@ export interface AboutPage {
   metaTitle?: LocalizedText;
   metaDescription?: LocalizedText;
   heroTitle?: LocalizedText;
-  heroDescription?: LocalizedText;
-  heroShowButton?: boolean;
-  heroButtonLabel?: LocalizedText;
   missionTitle?: LocalizedText;
   missionText?: LocalizedText;
   valuesTitle?: LocalizedText;
   valuesText?: LocalizedText;
-  teamSectionTitle?: LocalizedText;
-  finalCtaTitle?: LocalizedText;
-  finalCtaDescription?: LocalizedText;
-  finalCtaPrimaryBtnText?: LocalizedText;
-  finalCtaPrimaryBtnLink?: string;
-  finalCtaSecondaryBtnText?: LocalizedText;
-  finalCtaSecondaryBtnLink?: string;
 }
 
 // Careers Page

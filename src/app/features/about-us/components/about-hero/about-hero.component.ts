@@ -1,7 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { getLocalizedValue } from '../../../../core/services/sanity.helpers';
-import { LocalizedText } from '../../../../shared/models/sanity.models';
 import { LocaleService } from '../../../../core/services/locale.service';
 import { LocalizedTextPipe } from '../../../../shared/pipes/localized-text.pipe';
 
@@ -15,7 +13,6 @@ import { LocalizedTextPipe } from '../../../../shared/pipes/localized-text.pipe'
 })
 export class AboutHeroComponent {
     @Input() title: string = 'About Us';
-    @Input() description: LocalizedText | string = '';
     @Input() set currentLocale(val: string) {
         this._currentLocale.set(val);
     }

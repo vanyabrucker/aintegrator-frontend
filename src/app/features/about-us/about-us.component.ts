@@ -5,7 +5,7 @@ import { FoundersGridSectionComponent } from './components/founders-grid-section
 import { SanityService } from '../../core/services/sanity.service';
 import { LocaleService } from '../../core/services/locale.service';
 import { PageMetaService } from '../../core/services/page-meta.service';
-import { AboutPage, HomePage, TeamMember } from '../../shared/models/sanity.models';
+import { AboutPage, TeamMember } from '../../shared/models/sanity.models';
 import { getLocalized } from '../../core/utils/localization';
 import { SanityQueries } from '../../core/services/sanity.helpers';
 import { LocalizedTextPipe } from '../../shared/pipes/localized-text.pipe';
@@ -25,7 +25,6 @@ import { LocalizedTextPipe } from '../../shared/pipes/localized-text.pipe';
 })
 export class AboutUsComponent implements OnInit {
     aboutData = signal<AboutPage | null>(null);
-    homeData = signal<HomePage | null>(null);
     teamMembers = signal<TeamMember[]>([]);
     currentLocale = signal<string>('de');
     founders = signal<TeamMember[]>([]);
@@ -50,15 +49,13 @@ export class AboutUsComponent implements OnInit {
 
     private async loadContent() {
         try {
-            const [aboutData, teamMembers, homeData] = await Promise.all([
+            const [aboutData, teamMembers] = await Promise.all([
                 this.sanityService.fetch<AboutPage>(SanityQueries.ABOUT_PAGE),
                 this.sanityService.fetch<TeamMember[]>(SanityQueries.ALL_TEAM_MEMBERS),
-                this.sanityService.fetch<HomePage>(SanityQueries.HOME_PAGE)
             ]);
 
             this.aboutData.set(aboutData);
             this.teamMembers.set(teamMembers);
-            this.homeData.set(homeData);
 
             // Update founders with team members from CMS (founders with lowest order values)
             this.founders.set(teamMembers.slice(0, 2));
@@ -71,7 +68,7 @@ export class AboutUsComponent implements OnInit {
         if (!data) return;
         const locale = this.currentLocale();
         const title = getLocalized((data.metaTitle ?? data.heroTitle) as Record<string, string> | undefined, locale, ['en', 'de']);
-        const description = getLocalized((data.metaDescription ?? data.heroDescription) as Record<string, string> | undefined, locale, ['en', 'de']);
+        const description = getLocalized(data.metaDescription as Record<string, string> | undefined, locale, ['en', 'de']);
         if (title) this.pageMeta.setPageMeta(title, description ?? undefined);
     }
 }

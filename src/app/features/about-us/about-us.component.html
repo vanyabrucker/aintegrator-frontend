@@ -1,9 +1,8 @@
 <div class="about-us-page flex flex-col">
 
     @if (aboutData(); as data) {
-      @if (data.heroTitle && data.heroDescription) {
-        <app-about-hero [title]="data.heroTitle | localizedText" [description]="data.heroDescription"
-                        [currentLocale]="currentLocale()"></app-about-hero>
+      @if (data.heroTitle) {
+        <app-about-hero [title]="data.heroTitle | localizedText" [currentLocale]="currentLocale()"></app-about-hero>
       }
     }
 
