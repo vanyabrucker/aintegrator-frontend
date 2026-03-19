@@ -37,7 +37,7 @@ export class CaseStudyHeroComponent implements OnChanges {
             return;
         }
         try {
-            const url = getImageUrl(this.sanityService.getClient(), data.coverImage, 1144, 900);
+            const url = getImageUrl(this.sanityService.getClient(), data.coverImage, 1144, 400);
             this.coverImageUrl.set(url);
         } catch {
             this.coverImageUrl.set(null);

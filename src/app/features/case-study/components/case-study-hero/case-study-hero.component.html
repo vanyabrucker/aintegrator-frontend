@@ -23,11 +23,11 @@
         </p>
     }
 
-    <div class="w-full min-h-[100vh] overflow-hidden relative mt-24"
+    <div class="w-full h-[600px] overflow-hidden relative mt-24"
         [class.bg-ai-gray-200]="showSkeleton">
         @if (coverImageUrl(); as url) {
             <img [src]="url" [alt]="(data.title | localizedText) || 'Case study cover'"
-                class="w-full h-full object-contain absolute inset-0"
+                class="w-full h-full object-cover object-top absolute inset-0"
                 [class.opacity-0]="showSkeleton"
                 (load)="onImageLoad()" (error)="onImageError()">
         }
